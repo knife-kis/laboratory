@@ -31,15 +31,27 @@ public class User {
     @Column(length = 32)
     private String lastName;
 
+    @Column
+    private Long phone;
+
     public User() {
     }
 
-    public User(Long id, String name, String password, String firstName, String lastName) {
+    public User(Long id, String name, String password, String firstName, String lastName, Long phone) {
         this.id = id;
         this.name = name;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.phone = phone;
+    }
+
+    public Long getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Long phone) {
+        this.phone = phone;
     }
 
     public Long getId() {
