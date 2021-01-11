@@ -1,5 +1,6 @@
 package ru.optima.controller.repr;
 
+import ru.optima.persist.model.Equipment;
 import ru.optima.persist.model.Role;
 import ru.optima.persist.model.User;
 
@@ -26,6 +27,8 @@ public class UserRepr {
 
     private Set<Role> roles;
 
+    private Set<Equipment> equipments;
+
     public UserRepr() {
     }
 
@@ -38,6 +41,15 @@ public class UserRepr {
         this.lastName = user.getLastName();
         this.phone = user.getPhone();
         this.roles = user.getRoles();
+        this.equipments = user.getEquipments();
+    }
+
+    public Set<Equipment> getEquipments() {
+        return equipments;
+    }
+
+    public void setEquipments(Set<Equipment> equipments) {
+        this.equipments = equipments;
     }
 
     public Long getPhone() {

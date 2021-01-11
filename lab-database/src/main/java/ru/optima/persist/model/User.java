@@ -22,6 +22,12 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "users_equipments",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "equipment_id"))
+    private Set<Equipment> equipments;
+
     @Column
     private String email;
 
@@ -44,6 +50,14 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
+    }
+
+    public Set<Equipment> getEquipments() {
+        return equipments;
+    }
+
+    public void setEquipments(Set<Equipment> equipments) {
+        this.equipments = equipments;
     }
 
     public Long getPhone() {
