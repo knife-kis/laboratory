@@ -2,21 +2,21 @@ package ru.optima.persist.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "equipment")
-public class Equipment implements Serializable {
+@Table(name = "works")
+public class Work implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Long id;
 
     @Column(name = "RegistrationDate", nullable = false)
-    private Date registrationDate;
+    private LocalDate registrationDate;
 
     @Column(name = "clientName", nullable = false)
     private String clientName;
@@ -27,16 +27,16 @@ public class Equipment implements Serializable {
     @Column(name = "numberContract", nullable = false, unique = true)
     private String numberContract;
 
-    @ManyToMany(mappedBy = "equipment")
+    @ManyToMany(mappedBy = "works")
     private List<User> users;
 
     @Column(name = "customer")
     private String customer;
 
-    public Equipment() {
+    public Work() {
     }
 
-    public Equipment(int id, Date registrationDate, String clientName, String objectName, String numberContract, List<User> users, String customer) {
+    public Work(Long id, LocalDate registrationDate, String clientName, String objectName, String numberContract, List<User> users, String customer) {
         this.id = id;
         this.registrationDate = registrationDate;
         this.clientName = clientName;
@@ -46,19 +46,19 @@ public class Equipment implements Serializable {
         this.customer = customer;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Date getRegistrationDate() {
+    public LocalDate getRegistrationDate() {
         return registrationDate;
     }
 
-    public void setRegistrationDate(Date registrationDate) {
+    public void setRegistrationDate(LocalDate registrationDate) {
         this.registrationDate = registrationDate;
     }
 
@@ -106,14 +106,14 @@ public class Equipment implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Equipment equipment = (Equipment) o;
-        return Objects.equals(id, equipment.id) &&
-                Objects.equals(registrationDate, equipment.registrationDate) &&
-                Objects.equals(clientName, equipment.clientName) &&
-                Objects.equals(objectName, equipment.objectName) &&
-                Objects.equals(numberContract, equipment.numberContract) &&
-                Objects.equals(users, equipment.users) &&
-                Objects.equals(customer, equipment.customer);
+        Work work = (Work) o;
+        return Objects.equals(id, work.id) &&
+                Objects.equals(registrationDate, work.registrationDate) &&
+                Objects.equals(clientName, work.clientName) &&
+                Objects.equals(objectName, work.objectName) &&
+                Objects.equals(numberContract, work.numberContract) &&
+                Objects.equals(users, work.users) &&
+                Objects.equals(customer, work.customer);
     }
 
     @Override

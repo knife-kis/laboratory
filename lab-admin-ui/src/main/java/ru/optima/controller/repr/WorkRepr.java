@@ -1,48 +1,48 @@
 package ru.optima.controller.repr;
 
-import ru.optima.persist.model.Equipment;
+import ru.optima.persist.model.Work;
 import ru.optima.persist.model.User;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
-public class EquipmentRepr implements Serializable {
+public class WorkRepr implements Serializable {
 
-    private int id;
-    private Date registrationDate;
+    private Long id;
+    private LocalDate registrationDate;
     private String clientName;
     private String objectName;
     private String numberContract;
     private List<User> users;
     private String customer;
 
-    public EquipmentRepr() {
+    public WorkRepr() {
     }
 
-    public EquipmentRepr(Equipment equipment) {
-        this.id = equipment.getId();
-        this.registrationDate = equipment.getRegistrationDate();
-        this.clientName = equipment.getClientName();
-        this.objectName = equipment.getObjectName();
-        this.numberContract = equipment.getNumberContract();
-        this.users = equipment.getUsers();
-        this.customer = equipment.getCustomer();
+    public WorkRepr(Work work) {
+        this.id = work.getId();
+        this.registrationDate = work.getRegistrationDate();
+        this.clientName = work.getClientName();
+        this.objectName = work.getObjectName();
+        this.numberContract = work.getNumberContract();
+        this.users = work.getUsers();
+        this.customer = work.getCustomer();
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Date getRegistrationDate() {
+    public LocalDate getRegistrationDate() {
         return registrationDate;
     }
 
-    public void setRegistrationDate(Date registrationDate) {
+    public void setRegistrationDate(LocalDate registrationDate) {
         this.registrationDate = registrationDate;
     }
 

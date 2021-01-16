@@ -23,10 +23,10 @@ public class User {
     private Set<Role> roles;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "users_equipments",
+    @JoinTable(name = "users_works",
             joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "equipment_id"))
-    private Set<Equipment> equipments;
+            inverseJoinColumns = @JoinColumn(name = "work_id"))
+    private Set<Work> works;
 
     @Column
     private String email;
@@ -52,12 +52,12 @@ public class User {
         this.phone = phone;
     }
 
-    public Set<Equipment> getEquipments() {
-        return equipments;
+    public Set<Work> getWorks() {
+        return works;
     }
 
-    public void setEquipments(Set<Equipment> equipments) {
-        this.equipments = equipments;
+    public void setWorks(Set<Work> works) {
+        this.works = works;
     }
 
     public Long getPhone() {
