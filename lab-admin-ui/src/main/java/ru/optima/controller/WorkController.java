@@ -44,7 +44,7 @@ public class WorkController {
     @DeleteMapping("/work/{id}/delete")
     public String adminDeleteWork(Model model, @PathVariable("id") Long id) {
         workService.delete(id);
-        return "redirect:/work";
+        return "redirect:/works";
     }
 
 }

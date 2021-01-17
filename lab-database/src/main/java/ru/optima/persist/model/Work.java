@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "works")
@@ -33,10 +34,16 @@ public class Work implements Serializable {
     @Column(name = "customer")
     private String customer;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "works_equpments",
+            joinColumns = @JoinColumn(name = "work_id"),
+            inverseJoinColumns = @JoinColumn(name = "equipment_id"))
+    private Set<Equipment> equipment;
+
     public Work() {
     }
 
-    public Work(Long id, LocalDate registrationDate, String clientName, String objectName, String numberContract, List<User> users, String customer) {
+    public Work(Long id, LocalDate registrationDate, String clientName, String objectName, String numberContract, List<User> users, String customer, Set<Equipment> equipment) {
         this.id = id;
         this.registrationDate = registrationDate;
         this.clientName = clientName;
@@ -44,6 +51,15 @@ public class Work implements Serializable {
         this.numberContract = numberContract;
         this.users = users;
         this.customer = customer;
+        this.equipment = equipment;
+    }
+
+    public Set<Equipment> getEquipment() {
+        return equipment;
+    }
+
+    public void setEquipment(Set<Equipment> equipment) {
+        this.equipment = equipment;
     }
 
     public Long getId() {

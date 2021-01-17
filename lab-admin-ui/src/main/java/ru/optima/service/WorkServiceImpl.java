@@ -33,6 +33,7 @@ public class WorkServiceImpl implements WorkService, Serializable {
         work.setObjectName(workRepr.getObjectName());
         work.setRegistrationDate(workRepr.getRegistrationDate());
         work.setUsers(workRepr.getUsers());
+        work.setEquipment(workRepr.getEquipment());
         workRepository.save(work);
     }
 

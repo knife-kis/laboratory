@@ -1,11 +1,13 @@
 package ru.optima.controller.repr;
 
+import ru.optima.persist.model.Equipment;
 import ru.optima.persist.model.Work;
 import ru.optima.persist.model.User;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 public class WorkRepr implements Serializable {
 
@@ -15,6 +17,7 @@ public class WorkRepr implements Serializable {
     private String objectName;
     private String numberContract;
     private List<User> users;
+    private Set<Equipment> equipment;
     private String customer;
 
     public WorkRepr() {
@@ -28,6 +31,15 @@ public class WorkRepr implements Serializable {
         this.numberContract = work.getNumberContract();
         this.users = work.getUsers();
         this.customer = work.getCustomer();
+        this.equipment = work.getEquipment();
+    }
+
+    public Set<Equipment> getEquipment() {
+        return equipment;
+    }
+
+    public void setEquipment(Set<Equipment> equipment) {
+        this.equipment = equipment;
     }
 
     public Long getId() {
