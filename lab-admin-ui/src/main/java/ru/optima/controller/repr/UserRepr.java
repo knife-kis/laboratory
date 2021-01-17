@@ -12,13 +12,11 @@ public class UserRepr {
     private Long id;
 
     @NotEmpty
-    private String username;
-
-    @NotEmpty
     private String password;
 
     private String firstName;
 
+    @NotEmpty
     private String lastName;
 
     private Long phone;
@@ -34,7 +32,6 @@ public class UserRepr {
 
     public UserRepr(User user) {
         this.id = user.getId();
-        this.username = user.getName();
         this.password = user.getPassword();
         this.email = user.getEmail();
         this.firstName = user.getFirstName();
@@ -66,14 +63,6 @@ public class UserRepr {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getPassword() {
@@ -120,7 +109,7 @@ public class UserRepr {
     public String toString() {
         return "UserRepr{" +
                 "id=" + id +
-                ", username='" + username + '\'' +
+                ", username='" + lastName + '\'' +
                 ", password='" + password + '\'' +
                 '}';
     }

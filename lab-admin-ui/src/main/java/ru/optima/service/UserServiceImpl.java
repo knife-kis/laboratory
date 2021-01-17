@@ -29,7 +29,6 @@ public class UserServiceImpl implements UserService {
     public void save(UserRepr userRepr) {
         User user = new User();
         user.setId(userRepr.getId());
-        user.setName(userRepr.getUsername());
         user.setPassword(passwordEncoder.encode(userRepr.getPassword()));
         user.setEmail(userRepr.getEmail());
         user.setFirstName(userRepr.getFirstName());

@@ -13,7 +13,7 @@
         <tagDatabase tag="db_init"/>
     </changeSet>
 
-    <include file="v-1.0/db.changelog-20210116-102240413.xml" relativeToChangelogFile="true"/>
+    <include file="v-1.0/db.changelog-20210117-052358843.xml" relativeToChangelogFile="true"/>
 
     <changeSet id="10" author="maks_tarn">
         <tagDatabase tag="v-1.0"/>
