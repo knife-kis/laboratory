@@ -17,7 +17,6 @@ public class WorkRepr implements Serializable {
     private String objectName;
     private String numberContract;
     private List<User> users;
-    private Set<Equipment> equipment;
     private String customer;
 
     public WorkRepr() {
@@ -31,15 +30,6 @@ public class WorkRepr implements Serializable {
         this.numberContract = work.getNumberContract();
         this.users = work.getUsers();
         this.customer = work.getCustomer();
-        this.equipment = work.getEquipment();
-    }
-
-    public Set<Equipment> getEquipment() {
-        return equipment;
-    }
-
-    public void setEquipment(Set<Equipment> equipment) {
-        this.equipment = equipment;
     }
 
     public Long getId() {

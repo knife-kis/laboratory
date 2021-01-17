@@ -4,8 +4,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "works")
@@ -34,16 +32,10 @@ public class Work implements Serializable {
     @Column(name = "customer")
     private String customer;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "works_equpments",
-            joinColumns = @JoinColumn(name = "work_id"),
-            inverseJoinColumns = @JoinColumn(name = "equipment_id"))
-    private Set<Equipment> equipment;
-
     public Work() {
     }
 
-    public Work(Long id, LocalDate registrationDate, String clientName, String objectName, String numberContract, List<User> users, String customer, Set<Equipment> equipment) {
+    public Work(Long id, LocalDate registrationDate, String clientName, String objectName, String numberContract, List<User> users, List<Equipment> equipment, String customer) {
         this.id = id;
         this.registrationDate = registrationDate;
         this.clientName = clientName;
@@ -51,15 +43,6 @@ public class Work implements Serializable {
         this.numberContract = numberContract;
         this.users = users;
         this.customer = customer;
-        this.equipment = equipment;
-    }
-
-    public Set<Equipment> getEquipment() {
-        return equipment;
-    }
-
-    public void setEquipment(Set<Equipment> equipment) {
-        this.equipment = equipment;
     }
 
     public Long getId() {
@@ -116,24 +99,5 @@ public class Work implements Serializable {
 
     public void setCustomer(String customer) {
         this.customer = customer;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Work work = (Work) o;
-        return Objects.equals(id, work.id) &&
-                Objects.equals(registrationDate, work.registrationDate) &&
-                Objects.equals(clientName, work.clientName) &&
-                Objects.equals(objectName, work.objectName) &&
-                Objects.equals(numberContract, work.numberContract) &&
-                Objects.equals(users, work.users) &&
-                Objects.equals(customer, work.customer);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, registrationDate, clientName, objectName, numberContract, users, customer);
     }
 }

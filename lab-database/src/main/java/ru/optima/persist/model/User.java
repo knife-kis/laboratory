@@ -1,5 +1,6 @@
 package ru.optima.persist.model;
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -23,7 +24,13 @@ public class User {
     @JoinTable(name = "users_works",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "work_id"))
-    private Set<Work> works;
+    private List<Work> works;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "users_equipments",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "equipments_id"))
+    private List<Equipment> equipments;
 
     @Column
     private String email;
@@ -48,22 +55,6 @@ public class User {
         this.phone = phone;
     }
 
-    public Set<Work> getWorks() {
-        return works;
-    }
-
-    public void setWorks(Set<Work> works) {
-        this.works = works;
-    }
-
-    public Long getPhone() {
-        return phone;
-    }
-
-    public void setPhone(Long phone) {
-        this.phone = phone;
-    }
-
     public Long getId() {
         return id;
     }
@@ -80,20 +71,36 @@ public class User {
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public Set<Role> getRoles() {
         return roles;
     }
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public List<Work> getWorks() {
+        return works;
+    }
+
+    public void setWorks(List<Work> works) {
+        this.works = works;
+    }
+
+    public List<Equipment> getEquipments() {
+        return equipments;
+    }
+
+    public void setEquipments(List<Equipment> equipments) {
+        this.equipments = equipments;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getFirstName() {
@@ -110,5 +117,13 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public Long getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Long phone) {
+        this.phone = phone;
     }
 }

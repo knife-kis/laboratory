@@ -5,6 +5,7 @@ import ru.optima.persist.model.Role;
 import ru.optima.persist.model.User;
 
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 import java.util.Set;
 
 public class UserRepr {
@@ -25,7 +26,7 @@ public class UserRepr {
 
     private Set<Role> roles;
 
-    private Set<Work> works;
+    private List<Work> works;
 
     public UserRepr() {
     }
@@ -39,22 +40,6 @@ public class UserRepr {
         this.phone = user.getPhone();
         this.roles = user.getRoles();
         this.works = user.getWorks();
-    }
-
-    public Set<Work> getWorks() {
-        return works;
-    }
-
-    public void setWorks(Set<Work> works) {
-        this.works = works;
-    }
-
-    public Long getPhone() {
-        return phone;
-    }
-
-    public void setPhone(Long phone) {
-        this.phone = phone;
     }
 
     public Long getId() {
@@ -89,6 +74,14 @@ public class UserRepr {
         this.lastName = lastName;
     }
 
+    public Long getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Long phone) {
+        this.phone = phone;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -103,6 +96,14 @@ public class UserRepr {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public List<Work> getWorks() {
+        return works;
+    }
+
+    public void setWorks(List<Work> works) {
+        this.works = works;
     }
 
     @Override

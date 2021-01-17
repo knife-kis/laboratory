@@ -11,7 +11,9 @@
             <li th:classappend="${activePage == 'Roles'} ? active"><a th:href="@{/roles}">
                 <i class="fa fa-fw fa-link"></i> Роли</a></li>
             <li th:classappend="${activePage == 'Works'} ? active"><a th:href="@{/works}">
-                <i class="fa fa-fw fa-link"></i> Список работ</a></li>
+                <i class="fa fa-fw fa-link"></i> Список работ</a>
+            </li><li th:classappend="${activePage == 'Equipments'} ? active"><a th:href="@{/equipments}">
+                <i class="fa fa-fw fa-link"></i> Список оборудования</a></li>
         </ul>
     </div>
 </body>

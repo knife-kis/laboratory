@@ -27,7 +27,7 @@ public class EquipmentController {
         return "equipments";
     }
 
-    @GetMapping("work/{id}/edit")
+    @GetMapping("equipment/{id}/edit")
     public String adminEditWork(Model model, @PathVariable("id") Long id){
         model.addAttribute("edit", true);
         model.addAttribute("activePage", "Equipment");
@@ -35,7 +35,7 @@ public class EquipmentController {
         return "equipment_form";
     }
 
-    @GetMapping("work/create")
+    @GetMapping("equipment/create")
     public String adminCreateWork(Model model) {
         model.addAttribute("create", true);
         model.addAttribute("activePage", "Equipment"); // TODO ?
@@ -43,7 +43,7 @@ public class EquipmentController {
         return "equipment_form";
     }
 
-    @DeleteMapping("/work/{id}/delete")
+    @DeleteMapping("/equipment/{id}/delete")
     public String adminDeleteWork(Model model, @PathVariable("id") Long id) {
         equipmentService.delete(id);
         return "redirect:/equipments";

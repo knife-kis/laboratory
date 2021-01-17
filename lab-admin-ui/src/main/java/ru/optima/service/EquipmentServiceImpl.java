@@ -34,6 +34,7 @@ public class EquipmentServiceImpl implements EquipmentService, Serializable {
         equipment.setInventoruNumber(equipmentRepr.getInventoruNumber());
         equipment.setVerificationNumber(equipmentRepr.getVerificationNumber());
         equipment.setVerificationDate(equipmentRepr.getVerificationDate());
+        equipment.setVerificationDateEnd(equipmentRepr.getVerificationDateEnd());
         equipment.setUsers(equipmentRepr.getUsers());
         equipmentRepository.save(equipment);
     }

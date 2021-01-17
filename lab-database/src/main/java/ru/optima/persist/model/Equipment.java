@@ -21,28 +21,32 @@ public class Equipment implements Serializable {
     @Column(name = "inventoruNumber", nullable = false)
     private Integer inventoruNumber;
 
-    @Column(name = "inventoruNumber")
+    @Column(name = "factoryNumber")
     private Long factoryNumber;
 
     @Column(name = "verificationNumber")
     private Long verificationNumber;
 
-    @Column(name = "verificationDate", nullable = false)
+    @Column(name = "verificationDate")
     private LocalDate verificationDate;
 
-    @ManyToMany(mappedBy = "works")
+    @Column(name = "verificationDateEnd")
+    private LocalDate verificationDateEnd;
+
+    @ManyToMany(mappedBy = "equipments")
     private List<User> users;
 
     public Equipment() {
     }
 
-    public Equipment(Long id, String name, Integer inventoruNumber, Long factoryNumber, Long verificationNumber, LocalDate verificationDate, List<User> users) {
+    public Equipment(Long id, String name, Integer inventoruNumber, Long factoryNumber, Long verificationNumber, LocalDate verificationDate, LocalDate verificationDateEnd, List<User> users, List<Work> work) {
         this.id = id;
         this.name = name;
         this.inventoruNumber = inventoruNumber;
         this.factoryNumber = factoryNumber;
         this.verificationNumber = verificationNumber;
         this.verificationDate = verificationDate;
+        this.verificationDateEnd = verificationDateEnd;
         this.users = users;
     }
 
@@ -66,7 +70,7 @@ public class Equipment implements Serializable {
         return inventoruNumber;
     }
 
-    public void setInventoruNumber(int inventoruNumber) {
+    public void setInventoruNumber(Integer inventoruNumber) {
         this.inventoruNumber = inventoruNumber;
     }
 
@@ -74,7 +78,7 @@ public class Equipment implements Serializable {
         return factoryNumber;
     }
 
-    public void setFactoryNumber(long factoryNumber) {
+    public void setFactoryNumber(Long factoryNumber) {
         this.factoryNumber = factoryNumber;
     }
 
@@ -82,7 +86,7 @@ public class Equipment implements Serializable {
         return verificationNumber;
     }
 
-    public void setVerificationNumber(long verificationNumber) {
+    public void setVerificationNumber(Long verificationNumber) {
         this.verificationNumber = verificationNumber;
     }
 
@@ -94,30 +98,19 @@ public class Equipment implements Serializable {
         this.verificationDate = verificationDate;
     }
 
+    public LocalDate getVerificationDateEnd() {
+        return verificationDateEnd;
+    }
+
+    public void setVerificationDateEnd(LocalDate verificationDateEnd) {
+        this.verificationDateEnd = verificationDateEnd;
+    }
+
     public List<User> getUsers() {
         return users;
     }
 
     public void setUsers(List<User> users) {
         this.users = users;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Equipment equipment = (Equipment) o;
-        return inventoruNumber == equipment.inventoruNumber &&
-                factoryNumber == equipment.factoryNumber &&
-                verificationNumber == equipment.verificationNumber &&
-                Objects.equals(id, equipment.id) &&
-                Objects.equals(name, equipment.name) &&
-                Objects.equals(verificationDate, equipment.verificationDate) &&
-                Objects.equals(users, equipment.users);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, inventoruNumber, factoryNumber, verificationNumber, verificationDate, users);
     }
 }
