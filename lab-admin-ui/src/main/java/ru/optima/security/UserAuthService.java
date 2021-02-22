@@ -11,25 +11,25 @@ import ru.optima.persist.repo.UserRepository;
 
 import java.util.Collections;
 
-@Service
-@Transactional(readOnly = true)
-public class UserAuthService implements UserDetailsService {
-
-    private final UserRepository userRepository;
-
-    @Autowired
-    public UserAuthService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findUserBylastName(username)
-                .map(user -> new org.springframework.security.core.userdetails.User(
-                        user.getLastName(),
-                        user.getPassword(),
-                        Collections.singletonList(new SimpleGrantedAuthority("USER"))
-                ))
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-    }
-}
+//@Service
+//@Transactional(readOnly = true)
+//public class UserAuthService implements UserDetailsService {
+//
+//    private final UserRepository userRepository;
+//
+//    @Autowired
+//    public UserAuthService(UserRepository userRepository) {
+//        this.userRepository = userRepository;
+//    }
+//
+//    @Override
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        return userRepository.findUserByLastName(username)
+//                .map(user -> new org.springframework.security.core.userdetails.User(
+//                        user.getLastName(),
+//                        user.getPassword(),
+//                        Collections.singletonList(new SimpleGrantedAuthority("USER"))
+//                ))
+//                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+//    }
+//}

@@ -4,11 +4,11 @@ INSERT INTO `users` (`last_name`, `password`)
 GO
 
 INSERT INTO `roles` (`name`)
-VALUE ('ADMIN'), ('GUEST');
+VALUE ('ROLE_ADMIN'), ('ROLE_GUEST');
 GO
 
 INSERT INTO `users_roles`(`user_id`, `role_id`)
-SELECT (SELECT id FROM `users` WHERE `last_name` = 'admin'), (SELECT id FROM `roles` WHERE `name` = 'ADMIN')
+SELECT (SELECT id FROM `users` WHERE `last_name` = 'admin'), (SELECT id FROM `roles` WHERE `name` = 'ROLE_ADMIN')
 UNION ALL
-SELECT (SELECT id FROM `users` WHERE `last_name` = 'guest'), (SELECT id FROM `roles` WHERE `name` = 'GUEST');
+SELECT (SELECT id FROM `users` WHERE `last_name` = 'guest'), (SELECT id FROM `roles` WHERE `name` = 'ROLE_GUEST');
 GO

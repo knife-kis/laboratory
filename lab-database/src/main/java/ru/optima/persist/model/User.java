@@ -1,5 +1,6 @@
 package ru.optima.persist.model;
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -14,11 +15,11 @@ public class User {
     @Column(length = 128, nullable = false)
     private String password;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+    private Collection<Role> roles;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "users_works",
@@ -32,7 +33,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "equipments_id"))
     private List<Equipment> equipments;
 
-    @Column
+    @Column(length = 128, name = "email")
     private String email;
 
     @Column(length = 32, name = "first_name")
@@ -47,9 +48,13 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String password, String firstName, String lastName, Long phone) {
+    public User(Long id, String password, Collection<Role> roles, List<Work> works, List<Equipment> equipments, String email, String firstName, String lastName, Long phone) {
         this.id = id;
         this.password = password;
+        this.roles = roles;
+        this.works = works;
+        this.equipments = equipments;
+        this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
@@ -71,11 +76,12 @@ public class User {
         this.password = password;
     }
 
-    public Set<Role> getRoles() {
+
+    public Collection<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(Collection<Role> roles) {
         this.roles = roles;
     }
 

@@ -41,7 +41,7 @@
                         <td th:text="${usr.lastName}"></td>
                         <td th:text="${usr.phone}"></td>
                         <td th:text="${usr.email}"></td>
-<!--                        <td th:text="${@roleService.getRolesByIds(usr.id)}">-->
+                        <td th:text="${usr.getRoles()}"></td>
 <!--                        </td>-->
 <!--                        <div >-->
 <!--                            <select id="roles" th:field="*{roles}" required>-->
@@ -70,13 +70,13 @@
     </div>
 </div>
 
-<script th:replace="fragments/footer :: scripts"></script>
-<script th:src="@{/js/datatables.min.js}"></script>
-<script>
-    $(document).ready(function () {
-        $('#users').DataTable();
-    });
-</script>
+<!--<script th:replace="fragments/footer :: scripts"></script>-->
+<!--<script th:src="@{/js/datatables.min.js}"></script>-->
+<!--<script>-->
+<!--    $(document).ready(function () {-->
+<!--        $('#users').DataTable();-->
+<!--    });-->
+<!--</script>-->
 
 </body>
 </html>

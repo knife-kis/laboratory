@@ -5,6 +5,7 @@ import ru.optima.persist.model.Role;
 import ru.optima.persist.model.User;
 
 import javax.validation.constraints.NotEmpty;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -24,7 +25,7 @@ public class UserRepr {
 
     private String email;
 
-    private Set<Role> roles;
+    private Collection<Role> roles;
 
     private List<Work> works;
 
@@ -90,7 +91,7 @@ public class UserRepr {
         this.email = email;
     }
 
-    public Set<Role> getRoles() {
+    public Collection<Role> getRoles() {
         return roles;
     }
 
