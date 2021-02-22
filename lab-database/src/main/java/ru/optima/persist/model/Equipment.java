@@ -18,19 +18,19 @@ public class Equipment implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "inventoruNumber", nullable = false)
+    @Column(name = "inventoru_number", nullable = false)
     private Integer inventoruNumber;
 
-    @Column(name = "factoryNumber")
+    @Column(name = "factory_number")
     private Long factoryNumber;
 
-    @Column(name = "verificationNumber")
+    @Column(name = "verification_number")
     private Long verificationNumber;
 
-    @Column(name = "verificationDate")
+    @Column(name = "verification_date")
     private LocalDate verificationDate;
 
-    @Column(name = "verificationDateEnd")
+    @Column(name = "verification_dateEnd")
     private LocalDate verificationDateEnd;
 
     @ManyToMany(mappedBy = "equipments")

@@ -6,13 +6,13 @@
 
     <div th:fragment="sidebar" class="sidebar sidebar-dark bg-dark">
         <ul class="list-unstyled">
-            <li th:classappend="${activePage == 'Users'} ? active"><a th:href="@{/admin/users}">
+            <li th:classappend="${activePage == 'Users'} ? active"><a th:href="@{/users}">
                 <i class="fa fa-fw fa-link"></i> Пользователи</a></li>
-            <li th:classappend="${activePage == 'Roles'} ? active"><a th:href="@{/admin/roles}">
+            <li th:classappend="${activePage == 'Roles'} ? active"><a th:href="@{/roles}">
                 <i class="fa fa-fw fa-link"></i> Роли</a></li>
-            <li th:classappend="${activePage == 'Works'} ? active"><a th:href="@{/admin/works}">
+            <li th:classappend="${activePage == 'Works'} ? active"><a th:href="@{/works}">
                 <i class="fa fa-fw fa-link"></i> Список работ</a>
-            </li><li th:classappend="${activePage == 'Equipments'} ? active"><a th:href="@{/admin/equipments}">
+            </li><li th:classappend="${activePage == 'Equipments'} ? active"><a th:href="@{/equipments}">
                 <i class="fa fa-fw fa-link"></i> Список оборудования</a></li>
         </ul>
     </div>

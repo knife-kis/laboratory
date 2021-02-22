@@ -14,16 +14,16 @@ public class Work implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "RegistrationDate", nullable = false)
+    @Column(name = "Registration_date", nullable = false)
     private LocalDate registrationDate;
 
-    @Column(name = "clientName", nullable = false)
+    @Column(name = "client_name", nullable = false)
     private String clientName;
 
-    @Column(name = "objectName")
+    @Column(name = "object_name")
     private String objectName;
 
-    @Column(name = "numberContract", nullable = false, unique = true)
+    @Column(name = "number_contract", nullable = false, unique = true)
     private String numberContract;
 
     @ManyToMany(mappedBy = "works")

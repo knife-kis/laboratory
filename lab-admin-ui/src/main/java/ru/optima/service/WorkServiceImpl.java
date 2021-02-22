@@ -13,7 +13,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-@Transactional // TODO ?
+@Transactional
 public class WorkServiceImpl implements WorkService, Serializable {
 
     private WorkRepository workRepository;

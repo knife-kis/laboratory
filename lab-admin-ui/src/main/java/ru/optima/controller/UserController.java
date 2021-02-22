@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import ru.optima.controller.repr.UserRepr;
 import ru.optima.persist.repo.RoleRepository;
 import ru.optima.service.UserService;
@@ -34,14 +31,14 @@ public class UserController {
         return "login";
     }
 
-    @GetMapping("/users")
+    @GetMapping("/admin/users")
     public String adminUsersPage(Model model) {
         model.addAttribute("activePage", "Users");
         model.addAttribute("users", userService.findAll());
         return "users";
     }
 
-    @GetMapping("/user/{id}/edit")
+    @GetMapping("/admin/user/{id}/edit")
     public String adminEditUser(Model model, @PathVariable("id") Long id) {
         model.addAttribute("edit", true);
         model.addAttribute("activePage", "Users");
@@ -50,7 +47,7 @@ public class UserController {
         return "user_form";
     }
 
-    @GetMapping("/user/create")
+    @GetMapping("/admin/user/create")
     public String adminCreateUser(Model model) {
         model.addAttribute("create", true);
         model.addAttribute("activePage", "Users");
@@ -59,7 +56,7 @@ public class UserController {
         return "user_form";
     }
 
-    @PostMapping("/user")
+    @PostMapping("/admin/user")
     public String adminUpsertUser(@Valid UserRepr user, Model model, BindingResult bindingResult) {
         model.addAttribute("activePage", "Users");
 
@@ -68,16 +65,16 @@ public class UserController {
         }
 
         userService.save(user);
-        return "redirect:/users";
+        return "redirect:/admin/users";
     }
 
-    @DeleteMapping("/user/{id}/delete")
+    @DeleteMapping("/admin/user/{id}/delete")
     public String adminDeleteUser(Model model, @PathVariable("id") Long id) {
         userService.delete(id);
-        return "redirect:/users";
+        return "redirect:/admin/users";
     }
 
-    @GetMapping("/roles")
+    @GetMapping("/admin/roles")
     public String adminRolesPage(Model model) {
         model.addAttribute("activePage", "Roles");
         return "index";

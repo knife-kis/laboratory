@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import ru.optima.controller.repr.EquipmentRepr;
 import ru.optima.controller.repr.WorkRepr;
 import ru.optima.service.EquipmentService;
@@ -12,6 +13,7 @@ import ru.optima.service.WorkService;
 import ru.optima.warning.NotFoundException;
 
 @Controller
+@RequestMapping("/admin")
 public class EquipmentController {
 
     private EquipmentService equipmentService;
@@ -27,7 +29,7 @@ public class EquipmentController {
         return "equipments";
     }
 
-    @GetMapping("equipment/{id}/edit")
+    @GetMapping("/equipment/{id}/edit")
     public String adminEditWork(Model model, @PathVariable("id") Long id){
         model.addAttribute("edit", true);
         model.addAttribute("activePage", "Equipment");
@@ -35,7 +37,7 @@ public class EquipmentController {
         return "equipment_form";
     }
 
-    @GetMapping("equipment/create")
+    @GetMapping("/equipment/create")
     public String adminCreateWork(Model model) {
         model.addAttribute("create", true);
         model.addAttribute("activePage", "Equipment"); // TODO ?

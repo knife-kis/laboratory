@@ -4,12 +4,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+@RequestMapping("/")
 @Controller
-public class MainController {
+public class MainUserController {
 
-    @RequestMapping("/admin")
     public String indexPage(Model model) {
-        model.addAttribute("activePage", "None");
+        model.addAttribute("activePage","None");
         return "index";
     }
 }
+
