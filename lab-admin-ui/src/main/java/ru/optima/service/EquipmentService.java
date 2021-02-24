@@ -1,5 +1,6 @@
 package ru.optima.service;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import ru.optima.controller.repr.EquipmentRepr;
 
@@ -7,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public interface EquipmentService {
+public interface EquipmentService{
 
     void save(EquipmentRepr equipmentRepr);
 

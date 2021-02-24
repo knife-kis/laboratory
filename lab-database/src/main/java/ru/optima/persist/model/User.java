@@ -10,9 +10,10 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
-    @Column(length = 128, nullable = false)
+    @Column(name = "password", length = 128, nullable = false)
     private String password;
 
     @ManyToMany

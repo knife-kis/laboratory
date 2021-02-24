@@ -18,31 +18,21 @@ import ru.optima.persist.repo.UserRepository;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
 @Transactional
-public class UserServiceImpl implements UserDetailsService, UserService {
+public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
     private PasswordEncoder passwordEncoder;
-    private RoleRepository roleRepository;
 
     @Autowired
-    public void setUserRepository(UserRepository userRepository) {this.userRepository = userRepository;}
-
-    @Autowired
-    public void setRoleRepository(RoleRepository roleRepository) {
-        this.roleRepository = roleRepository;
-    }
-
-    @Autowired
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, RoleRepository roleRepository) {
+    public void setUserRepository(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
-        this.roleRepository = roleRepository;
     }
+
 
     public void save(UserRepr userRepr) {
         User user = new User();
@@ -52,7 +42,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         user.setFirstName(userRepr.getFirstName());
         user.setLastName(userRepr.getLastName());
         user.setRoles(userRepr.getRoles());
-        user.setWorks(user.getWorks());
+        user.setWorks(userRepr.getWorks());
         userRepository.save(user);
     }
 
@@ -77,15 +67,15 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         userRepository.deleteById(id);
     }
 
-    @Override
-    @Transactional
-    public UserDetails loadUserByUsername(String lastName) throws UsernameNotFoundException {
-        User user = userRepository.findUserByLastName(lastName).orElseThrow(() -> new UsernameNotFoundException("Invalid username or password"));
-        return new org.springframework.security.core.userdetails.User(user.getLastName(), user.getPassword(),
-                mapRolesToAuthorities(user.getRoles()));
-    }
-
-    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
-        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
-    }
+//    @Override
+//    @Transactional
+//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//        User user = userRepository.findUserByLastName(username).orElseThrow(() -> new UsernameNotFoundException("Invalid username or password"));
+//        return new org.springframework.security.core.userdetails.User(user.getLastName(), user.getPassword(),
+//                mapRolesToAuthorities(user.getRoles()));
+//    }
+//
+//    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
+//        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
+//    }
 }
