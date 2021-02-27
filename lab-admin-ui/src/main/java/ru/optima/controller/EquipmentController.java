@@ -24,14 +24,14 @@ public class EquipmentController {
     }
 
     @GetMapping("/equipments")
-    public String adminWorkPage(Model model) {
-        model.addAttribute("activePage", "Equipment");
-        model.addAttribute("equipment", equipmentService.findAll());
+    public String adminEquipmentsPage(Model model) {
+        model.addAttribute("activePage", "Equipments");
+        model.addAttribute("equipments", equipmentService.findAll());
         return "equipments";
     }
 
     @GetMapping("/equipment/{id}/edit")
-    public String adminEditWork(Model model, @PathVariable("id") Long id){
+    public String adminEditEquipment(Model model, @PathVariable("id") Long id){
         model.addAttribute("edit", true);
         model.addAttribute("activePage", "Equipment");
         model.addAttribute("equipment", equipmentService.findById(id).orElseThrow(NotFoundException::new));
@@ -39,29 +39,29 @@ public class EquipmentController {
     }
 
     @GetMapping("/equipment/create")
-    public String adminCreateWork(Model model) {
+    public String adminCreateEquipment(Model model) {
         model.addAttribute("create", true);
-        model.addAttribute("activePage", "Equipment"); // TODO ?
+        model.addAttribute("activePage", "Equipments"); // TODO ?
         model.addAttribute("equipment", new EquipmentRepr());
         return "equipment_form";
     }
 
     @PostMapping("/equipment")
-    public String adminUpsertUser(@Valid EquipmentRepr equipmentRepr, Model model, BindingResult bindingResult) {
-        model.addAttribute("activePage", "Equipnents");
+    public String adminUpsertEquipment(@Valid EquipmentRepr equipment, Model model, BindingResult bindingResult) {
+        model.addAttribute("activePage", "Equipments");
 
         if (bindingResult.hasErrors()) {
             return "equipment_form";
         }
 
-        equipmentService.save(equipmentRepr);
+        equipmentService.save(equipment);
         return "redirect:/admin/equipments";
     }
 
     @DeleteMapping("/equipment/{id}/delete")
-    public String adminDeleteWork(Model model, @PathVariable("id") Long id) {
+    public String adminDeleteEquipment(Model model, @PathVariable("id") Long id) {
         equipmentService.delete(id);
-        return "redirect:/equipments";
+        return "redirect:/admin/equipments";
     }
 
 }

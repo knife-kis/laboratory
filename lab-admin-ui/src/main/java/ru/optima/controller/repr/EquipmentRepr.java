@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
-public class EquipmentRepr implements Serializable {
+public class EquipmentRepr {
 
     private Long id;
     private String name;

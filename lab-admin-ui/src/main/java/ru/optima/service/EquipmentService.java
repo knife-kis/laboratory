@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public interface EquipmentService{
+public interface EquipmentService {
 
     void save(EquipmentRepr equipmentRepr);
 

@@ -25,7 +25,7 @@ public class Equipment implements Serializable {
     @Column(name = "inventoru_number", nullable = false)
     private String inventoruNumber;
 
-    @Column(name = "factory_number", nullable = false)
+    @Column(name = "factory_number")
     private String factoryNumber;
 
     @Column(name = "verification_number")

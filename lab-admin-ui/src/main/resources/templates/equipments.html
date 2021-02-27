@@ -21,7 +21,7 @@
                     <button type="submit" class="btn btn-primary">Создать новое оборудование</button>
                 </form>
 
-                <table id="equipment" class="table table-hover" cellspacing="0" width="100%">
+                <table id="equipments" class="table table-hover" cellspacing="0" width="100%">
                     <thead>
                     <tr>
                         <th>Id</th>
@@ -34,7 +34,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="equ : ${equipment}">
+                    <tr th:each="equ : ${equipments}">
                         <td th:text="${equ.id}"></td>
                         <td th:text="${equ.name}"></td>
                         <td th:text="${equ.inventoruNumber}"></td>
@@ -42,10 +42,10 @@
                         <td th:text="${equ.verificationNumber}"></td>
                         <td th:text="${equ.verificationDate}"></td>
                         <td>
-                            <a th:href="@{/equipment/{id}/edit(id=${equ.id})}" class="btn btn-icon btn-pill btn-primary" data-toggle="tooltip" title="Edit">
+                            <a th:href="@{/admin/equipment/{id}/edit(id=${equ.id})}" class="btn btn-icon btn-pill btn-primary" data-toggle="tooltip" title="Edit">
                                 <i class="fa fa-fw fa-edit"></i>
                             </a>
-                            <form th:action="@{/equipment/{id}/delete(id=${equ.id})}" th:method="delete" class="d-inline">
+                            <form th:action="@{/admin/equipment/{id}/delete(id=${equ.id})}" th:method="delete" class="d-inline">
                                 <button class="btn btn-icon btn-pill btn-danger" data-toggle="tooltip" title="Delete">
                                     <i class="fa fa-fw fa-trash"></i>
                                 </button>
