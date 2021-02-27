@@ -8,11 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import ru.optima.controller.repr.UserRepr;
 import ru.optima.persist.repo.RoleRepository;
 import ru.optima.service.UserService;
-import ru.optima.service.UserServiceImpl;
 import ru.optima.warning.NotFoundException;
 
 import javax.validation.Valid;
-
 @Controller
 public class UserController {
 

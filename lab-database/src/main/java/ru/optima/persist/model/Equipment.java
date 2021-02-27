@@ -1,7 +1,11 @@
 package ru.optima.persist.model;
 
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
@@ -19,19 +23,19 @@ public class Equipment implements Serializable {
     private String name;
 
     @Column(name = "inventoru_number", nullable = false)
-    private Integer inventoruNumber;
+    private String inventoruNumber;
 
-    @Column(name = "factory_number")
-    private Long factoryNumber;
+    @Column(name = "factory_number", nullable = false)
+    private String factoryNumber;
 
     @Column(name = "verification_number")
-    private Long verificationNumber;
+    private String verificationNumber;
 
     @Column(name = "verification_date")
-    private LocalDate verificationDate;
+    private Date verificationDate;
 
-    @Column(name = "verification_dateEnd")
-    private LocalDate verificationDateEnd;
+    @Column(name = "verification_date_End")
+    private Date verificationDateEnd;
 
     @ManyToMany(mappedBy = "equipments")
     private List<User> users;
@@ -39,7 +43,7 @@ public class Equipment implements Serializable {
     public Equipment() {
     }
 
-    public Equipment(Long id, String name, Integer inventoruNumber, Long factoryNumber, Long verificationNumber, LocalDate verificationDate, LocalDate verificationDateEnd, List<User> users, List<Work> work) {
+    public Equipment(Long id, String name, String inventoruNumber, String factoryNumber, String verificationNumber, Date verificationDate, Date verificationDateEnd, List<User> users) {
         this.id = id;
         this.name = name;
         this.inventoruNumber = inventoruNumber;
@@ -66,43 +70,43 @@ public class Equipment implements Serializable {
         this.name = name;
     }
 
-    public Integer getInventoruNumber() {
+    public String getInventoruNumber() {
         return inventoruNumber;
     }
 
-    public void setInventoruNumber(Integer inventoruNumber) {
+    public void setInventoruNumber(String inventoruNumber) {
         this.inventoruNumber = inventoruNumber;
     }
 
-    public Long getFactoryNumber() {
+    public String getFactoryNumber() {
         return factoryNumber;
     }
 
-    public void setFactoryNumber(Long factoryNumber) {
+    public void setFactoryNumber(String factoryNumber) {
         this.factoryNumber = factoryNumber;
     }
 
-    public Long getVerificationNumber() {
+    public String getVerificationNumber() {
         return verificationNumber;
     }
 
-    public void setVerificationNumber(Long verificationNumber) {
+    public void setVerificationNumber(String verificationNumber) {
         this.verificationNumber = verificationNumber;
     }
 
-    public LocalDate getVerificationDate() {
+    public Date getVerificationDate() {
         return verificationDate;
     }
 
-    public void setVerificationDate(LocalDate verificationDate) {
+    public void setVerificationDate(Date verificationDate) {
         this.verificationDate = verificationDate;
     }
 
-    public LocalDate getVerificationDateEnd() {
+    public Date getVerificationDateEnd() {
         return verificationDateEnd;
     }
 
-    public void setVerificationDateEnd(LocalDate verificationDateEnd) {
+    public void setVerificationDateEnd(Date verificationDateEnd) {
         this.verificationDateEnd = verificationDateEnd;
     }
 

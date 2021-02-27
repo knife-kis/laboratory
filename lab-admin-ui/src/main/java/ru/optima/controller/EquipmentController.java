@@ -2,15 +2,16 @@ package ru.optima.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import ru.optima.controller.repr.EquipmentRepr;
+import ru.optima.controller.repr.UserRepr;
 import ru.optima.controller.repr.WorkRepr;
 import ru.optima.service.EquipmentService;
 import ru.optima.service.WorkService;
 import ru.optima.warning.NotFoundException;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/admin")
@@ -43,6 +44,18 @@ public class EquipmentController {
         model.addAttribute("activePage", "Equipment"); // TODO ?
         model.addAttribute("equipment", new EquipmentRepr());
         return "equipment_form";
+    }
+
+    @PostMapping("/equipment")
+    public String adminUpsertUser(@Valid EquipmentRepr equipmentRepr, Model model, BindingResult bindingResult) {
+        model.addAttribute("activePage", "Equipnents");
+
+        if (bindingResult.hasErrors()) {
+            return "equipment_form";
+        }
+
+        equipmentService.save(equipmentRepr);
+        return "redirect:/admin/equipments";
     }
 
     @DeleteMapping("/equipment/{id}/delete")

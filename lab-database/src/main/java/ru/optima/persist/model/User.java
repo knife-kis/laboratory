@@ -43,13 +43,13 @@ public class User {
     @Column(length = 32, name = "last_name")
     private String lastName;
 
-    @Column
-    private Long phone;
+    @Column(length = 32, name = "phone")
+    private String phone;
 
     public User() {
     }
 
-    public User(Long id, String password, Collection<Role> roles, List<Work> works, List<Equipment> equipments, String email, String firstName, String lastName, Long phone) {
+    public User(Long id, String password, Collection<Role> roles, List<Work> works, List<Equipment> equipments, String email, String firstName, String lastName, String phone) {
         this.id = id;
         this.password = password;
         this.roles = roles;
@@ -126,11 +126,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public Long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 }

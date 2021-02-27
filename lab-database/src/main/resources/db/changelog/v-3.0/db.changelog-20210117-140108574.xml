@@ -5,8 +5,8 @@
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="equipmentsPK"/>
             </column>
-            <column name="factory_number" type="BIGINT"/>
-            <column name="inventoru_number" type="INT">
+            <column name="factory_number" type="VARCHAR(255)"/>
+            <column name="inventoru_number" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="name" type="VARCHAR(255)">
@@ -14,7 +14,7 @@
             </column>
             <column name="verification_date" type="date"/>
             <column name="verification_date_end" type="date"/>
-            <column name="verification_number" type="BIGINT"/>
+            <column name="verification_number" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
     <changeSet author="maks_tarn (generated)" id="1610892076259-4">

@@ -1,22 +1,22 @@
 package ru.optima.controller.repr;
 
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import ru.optima.persist.model.Equipment;
 import ru.optima.persist.model.User;
-import ru.optima.persist.model.Work;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.sql.Date;
 import java.util.List;
 
 public class EquipmentRepr implements Serializable {
 
     private Long id;
     private String name;
-    private Integer inventoruNumber;
-    private Long factoryNumber;
-    private Long verificationNumber;
-    private LocalDate verificationDate;
-    private LocalDate verificationDateEnd;
+    private String inventoruNumber;
+    private String factoryNumber;
+    private String verificationNumber;
+    private Date verificationDate;
+    private Date verificationDateEnd;
     private List<User> users;
 
     public EquipmentRepr() {
@@ -49,43 +49,43 @@ public class EquipmentRepr implements Serializable {
         this.name = name;
     }
 
-    public Integer getInventoruNumber() {
+    public String getInventoruNumber() {
         return inventoruNumber;
     }
 
-    public void setInventoruNumber(Integer inventoruNumber) {
+    public void setInventoruNumber(String inventoruNumber) {
         this.inventoruNumber = inventoruNumber;
     }
 
-    public Long getFactoryNumber() {
+    public String getFactoryNumber() {
         return factoryNumber;
     }
 
-    public void setFactoryNumber(Long factoryNumber) {
+    public void setFactoryNumber(String factoryNumber) {
         this.factoryNumber = factoryNumber;
     }
 
-    public Long getVerificationNumber() {
+    public String getVerificationNumber() {
         return verificationNumber;
     }
 
-    public void setVerificationNumber(Long verificationNumber) {
+    public void setVerificationNumber(String verificationNumber) {
         this.verificationNumber = verificationNumber;
     }
 
-    public LocalDate getVerificationDate() {
+    public Date getVerificationDate() {
         return verificationDate;
     }
 
-    public void setVerificationDate(LocalDate verificationDate) {
+    public void setVerificationDate(Date verificationDate) {
         this.verificationDate = verificationDate;
     }
 
-    public LocalDate getVerificationDateEnd() {
+    public Date getVerificationDateEnd() {
         return verificationDateEnd;
     }
 
-    public void setVerificationDateEnd(LocalDate verificationDateEnd) {
+    public void setVerificationDateEnd(Date verificationDateEnd) {
         this.verificationDateEnd = verificationDateEnd;
     }
 
