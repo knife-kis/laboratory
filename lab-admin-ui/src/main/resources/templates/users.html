@@ -34,23 +34,20 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="usr : ${users}">
+                    <tr>
 
+                    <tr th:each="usr : ${users}"  >
                         <td th:text="${usr.id}"></td>
                         <td th:text="${usr.firstName}"></td>
                         <td th:text="${usr.lastName}"></td>
                         <td th:text="${usr.phone}"></td>
                         <td th:text="${usr.email}"></td>
-                        <td th:text="${usr.getRoles()}"></td>
-<!--                        </td>-->
-<!--                        <div >-->
-<!--                            <select id="roles" th:field="*{roles}" required>-->
-<!--                                <option th:each="role : ${roles}"-->
-<!--                                        th:text="${usr.role.name}"-->
-<!--                                        th:value="${role.id}"-->
-<!--                                        th:selected="${user.roles?.contains(role)}"></option>-->
-<!--                            </select>-->
-<!--                        </div>-->
+<!--                        <td th:text="${roles}"></td>-->
+                        <td th:each="role : ${roles}"
+                                th:text="${role.name}"
+                                th:value="${role.id}"
+                                th:if="${usr.roles?.contains(role)}">
+                        </td>
                         <td>
                             <a th:href="@{/admin/user/{id}/edit(id=${usr.id})}" class="btn btn-icon btn-pill btn-primary" data-toggle="tooltip" title="Edit">
                                 <i class="fa fa-fw fa-edit"></i>
@@ -61,7 +58,8 @@
                                 </button>
                             </form>
                         </td>
-                    </tr>
+                    </tr></tr>
+
                     </tbody>
                 </table>
 

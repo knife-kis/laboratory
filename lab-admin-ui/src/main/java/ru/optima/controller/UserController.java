@@ -35,6 +35,7 @@ public class UserController {
     public String adminUsersPage(Model model) {
         model.addAttribute("activePage", "Users");
         model.addAttribute("users", userService.findAll());
+        model.addAttribute("roles", roleRepository.findAll());
         return "users";
     }
 
