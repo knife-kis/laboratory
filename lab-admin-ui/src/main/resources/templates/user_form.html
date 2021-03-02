@@ -49,6 +49,16 @@
                             </option>
                         </select>
                     </div>
+                     <div th:if="${edit}" class="form-group" >
+                        <label for="roles1">User roles</label>
+                         <input multiple class="form-control" id="roles1" th:value="${user.roles}" required>
+                             <option th:each="role : ${roles}"
+                                     th:text="${role.name}"
+                                     th:value="${role.id}"
+                                     th:selected="${user.roles?.contains(role)}">
+                             </option>
+                         </input>
+                    </div>
                 </div>
                 <div class="card-footer bg-white">
                     <button type="submit" class="btn btn-primary">Submit</button>

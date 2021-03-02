@@ -8,6 +8,7 @@ import javax.validation.constraints.NotEmpty;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class UserRepr {
 
@@ -28,6 +29,8 @@ public class UserRepr {
     private Collection<Role> roles;
 
     private List<Work> works;
+
+
 
     public UserRepr() {
     }

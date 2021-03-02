@@ -1,13 +1,11 @@
 package ru.optima.controller.repr;
 
-import ru.optima.persist.model.Equipment;
 import ru.optima.persist.model.Work;
 import ru.optima.persist.model.User;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 public class WorkRepr implements Serializable {
 

@@ -1,8 +1,9 @@
 package ru.optima.persist.model;
+import ru.optima.persist.model.equipments.Equipment;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "users")

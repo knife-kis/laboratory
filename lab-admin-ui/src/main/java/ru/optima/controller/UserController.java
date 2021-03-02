@@ -6,22 +6,30 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.optima.controller.repr.UserRepr;
+import ru.optima.persist.model.Role;
 import ru.optima.persist.repo.RoleRepository;
+import ru.optima.service.RoleService;
 import ru.optima.service.UserService;
+import ru.optima.service.UserServiceImpl;
 import ru.optima.warning.NotFoundException;
 
 import javax.validation.Valid;
+import java.security.Principal;
+
 @Controller
 public class UserController {
 
     private final RoleRepository roleRepository;
     private final UserService userService;
+    private final UserServiceImpl userServiceImpl;
+    private RoleService roleService;
 
     @Autowired
-    public UserController(RoleRepository roleRepository,
-                          UserService userService) {
+    public UserController(UserServiceImpl userServiceImpl, RoleRepository roleRepository, UserService userService, RoleService roleService) {
         this.roleRepository = roleRepository;
         this.userService = userService;
+        this.roleService = roleService;
+        this.userServiceImpl = userServiceImpl;
     }
 
     @GetMapping("/login")
@@ -41,7 +49,7 @@ public class UserController {
     public String adminEditUser(Model model, @PathVariable("id") Long id) {
         model.addAttribute("edit", true);
         model.addAttribute("activePage", "Users");
-        model.addAttribute("user", userService.findById(id).orElseThrow(NotFoundException::new));
+        model.addAttribute("user", userServiceImpl.findById(id).orElseThrow(NotFoundException::new));
         model.addAttribute("roles", roleRepository.findAll());
         return "user_form";
     }

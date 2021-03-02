@@ -1,14 +1,11 @@
-package ru.optima.persist.model;
+package ru.optima.persist.model.equipments;
 
-import org.springframework.beans.propertyeditors.CustomDateEditor;
+import ru.optima.persist.model.User;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
-import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 @Table(name = "equipments")
@@ -39,6 +36,10 @@ public class Equipment implements Serializable {
 
     @ManyToMany(mappedBy = "equipments")
     private List<User> users;
+
+    @ManyToOne
+    @JoinColumn(name = "kit_id")
+    private Kit kit;
 
     public Equipment() {
     }

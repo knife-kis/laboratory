@@ -1,5 +1,7 @@
 package ru.optima.persist.model;
 
+import ru.optima.persist.model.equipments.Equipment;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;

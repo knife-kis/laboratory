@@ -1,10 +1,8 @@
 package ru.optima.controller.repr;
 
-import org.springframework.beans.propertyeditors.CustomDateEditor;
-import ru.optima.persist.model.Equipment;
+import ru.optima.persist.model.equipments.Equipment;
 import ru.optima.persist.model.User;
 
-import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 

@@ -1,15 +1,11 @@
 package ru.optima.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.optima.controller.repr.EquipmentRepr;
-import ru.optima.controller.repr.UserRepr;
-import ru.optima.persist.model.Equipment;
-import ru.optima.persist.model.User;
+import ru.optima.persist.model.equipments.Equipment;
 import ru.optima.persist.repo.EquipmentRepository;
-import ru.optima.persist.repo.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
