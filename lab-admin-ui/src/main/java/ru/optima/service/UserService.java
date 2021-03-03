@@ -1,11 +1,10 @@
 package ru.optima.service;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import ru.optima.controller.repr.UserRepr;
+import ru.optima.persist.model.User;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public interface UserService {
@@ -14,7 +13,7 @@ public interface UserService {
 
     List<UserRepr> findAll();
 
-    Optional<UserRepr> findById(Long id);
+    User findById(Long id);
 
     void delete(Long id);
 }

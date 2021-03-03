@@ -1,21 +1,14 @@
 package ru.optima.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.optima.controller.repr.UserRepr;
-import ru.optima.persist.model.Role;
 import ru.optima.persist.model.User;
-import ru.optima.persist.repo.RoleRepository;
 import ru.optima.persist.repo.UserRepository;
+import ru.optima.warning.UserNotFoundException;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -47,6 +40,10 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
+    public void edit(User user){
+        userRepository.save(user);
+    }
+
     @Override
     public List<UserRepr> findAll() {
         return userRepository.findAll().stream()
@@ -55,8 +52,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<UserRepr> findById(Long id) {
-        return userRepository.findById(id).map(UserRepr::new);
+    public User findById(Long id) {
+        return userRepository.findUserById(id)
+                .orElseThrow(() -> new UserNotFoundException("User by id " + id + " was not found"));
     }
 
     public Optional<UserRepr> findByLastName(String lastName) {

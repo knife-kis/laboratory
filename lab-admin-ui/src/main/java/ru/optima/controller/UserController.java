@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.optima.controller.repr.UserRepr;
 import ru.optima.persist.model.Role;
+import ru.optima.persist.model.User;
 import ru.optima.persist.repo.RoleRepository;
 import ru.optima.service.RoleService;
 import ru.optima.service.UserService;
@@ -22,13 +23,11 @@ public class UserController {
     private final RoleRepository roleRepository;
     private final UserService userService;
     private final UserServiceImpl userServiceImpl;
-    private RoleService roleService;
 
     @Autowired
     public UserController(UserServiceImpl userServiceImpl, RoleRepository roleRepository, UserService userService, RoleService roleService) {
         this.roleRepository = roleRepository;
         this.userService = userService;
-        this.roleService = roleService;
         this.userServiceImpl = userServiceImpl;
     }
 
@@ -49,7 +48,7 @@ public class UserController {
     public String adminEditUser(Model model, @PathVariable("id") Long id) {
         model.addAttribute("edit", true);
         model.addAttribute("activePage", "Users");
-        model.addAttribute("user", userServiceImpl.findById(id).orElseThrow(NotFoundException::new));
+        model.addAttribute("user", userServiceImpl.findById(id));
         model.addAttribute("roles", roleRepository.findAll());
         return "user_form";
     }
@@ -63,8 +62,8 @@ public class UserController {
         return "user_form";
     }
 
-    @PostMapping("/admin/user")
-    public String adminUpsertUser(@Valid UserRepr user, Model model, BindingResult bindingResult) {
+    @PostMapping("/admin/user/create")
+    public String adminCreateUser(@Valid UserRepr user, Model model, BindingResult bindingResult) {
         model.addAttribute("activePage", "Users");
 
         if (bindingResult.hasErrors()) {
@@ -72,6 +71,18 @@ public class UserController {
         }
 
         userService.save(user);
+        return "redirect:/admin/users";
+    }
+
+    @PostMapping("/admin/user/edit")
+    public String adminUpdateUser(@Valid User user, Model model, BindingResult bindingResult) {
+        model.addAttribute("activePage", "Users");
+
+        if (bindingResult.hasErrors()) {
+            return "user_form";
+        }
+
+        userServiceImpl.edit(user);
         return "redirect:/admin/users";
     }
 
