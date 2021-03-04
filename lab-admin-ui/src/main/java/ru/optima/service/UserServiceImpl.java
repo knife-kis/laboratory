@@ -41,6 +41,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public void edit(User user){
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
 
