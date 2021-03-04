@@ -6,16 +6,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.optima.controller.repr.UserRepr;
-import ru.optima.persist.model.Role;
 import ru.optima.persist.model.User;
 import ru.optima.persist.repo.RoleRepository;
-import ru.optima.service.RoleService;
 import ru.optima.service.UserService;
 import ru.optima.service.UserServiceImpl;
-import ru.optima.warning.NotFoundException;
 
 import javax.validation.Valid;
-import java.security.Principal;
 
 @Controller
 public class UserController {
@@ -25,7 +21,7 @@ public class UserController {
     private final UserServiceImpl userServiceImpl;
 
     @Autowired
-    public UserController(UserServiceImpl userServiceImpl, RoleRepository roleRepository, UserService userService, RoleService roleService) {
+    public UserController(UserServiceImpl userServiceImpl, RoleRepository roleRepository, UserService userService) {
         this.roleRepository = roleRepository;
         this.userService = userService;
         this.userServiceImpl = userServiceImpl;
