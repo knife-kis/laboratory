@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.optima.controller.repr.UserRepr;
+import ru.optima.repr.UserRepr;
 import ru.optima.persist.model.User;
 import ru.optima.service.UserService;
 import ru.optima.service.UserServiceImpl;
@@ -14,21 +14,39 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/users")
 public class RestUserController {
-    private final UserService userService;
+    private final UserServiceImpl userServiceImpl;
 
     @Autowired
-    public RestUserController(UserService userService) {
-        this.userService = userService;
+    public RestUserController(UserServiceImpl userService) {
+        this.userServiceImpl = userService;
     }
 
     @GetMapping("/all")
     public ResponseEntity<List<UserRepr>> getallUsers() {
-        List<UserRepr> users = userService.findAll();
+        List<UserRepr> users = userServiceImpl.findAll();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id) {
-        return userService.findById(id);
+    public ResponseEntity<User> getUserById(@PathVariable("id") Long id) {
+        return new ResponseEntity<>(userServiceImpl.findById(id), HttpStatus.OK);
+    }
+
+    @PostMapping("/add")
+    public ResponseEntity<User> addUser(User user){
+        User u = userServiceImpl.addUser(user);
+        return new ResponseEntity<>(u,HttpStatus.CREATED);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<User> updateUser(User user){
+        User u = userServiceImpl.updateUser(user);
+        return new ResponseEntity<>(u,HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable("id") Long id){
+        userServiceImpl.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

@@ -26,11 +26,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         this.userServiceImpl = userServiceImpl;
     }
 
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.authenticationProvider(authenticationProvider());
-//    }
-
     @Autowired
     public void setUserDetailsService(UserDetailsService userAuthService) {
         this.userDetailsService = userAuthService;
@@ -43,8 +38,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/js/*").permitAll()
                 .antMatchers("/webfonts/*").permitAll()
                 .antMatchers("/webjars/**").permitAll()
-//                .antMatchers("/admin/**").hasRole("ADMIN")
-//                .antMatchers("/**").authenticated()
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/**").authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")

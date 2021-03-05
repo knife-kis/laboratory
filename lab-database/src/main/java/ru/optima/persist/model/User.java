@@ -17,6 +17,18 @@ public class User {
     @Column(name = "password", length = 128, nullable = false)
     private String password;
 
+    @Column(length = 128, name = "email")
+    private String email;
+
+    @Column(length = 32, name = "first_name")
+    private String firstName;
+
+    @Column(length = 32, name = "last_name")
+    private String lastName;
+
+    @Column(length = 32, name = "phone")
+    private String phone;
+
     @ManyToMany
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -34,18 +46,6 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "equipments_id"))
     private List<Equipment> equipments;
-
-    @Column(length = 128, name = "email")
-    private String email;
-
-    @Column(length = 32, name = "first_name")
-    private String firstName;
-
-    @Column(length = 32, name = "last_name")
-    private String lastName;
-
-    @Column(length = 32, name = "phone")
-    private String phone;
 
     public User() {
     }

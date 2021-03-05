@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.optima.controller.repr.UserRepr;
+import ru.optima.repr.UserRepr;
 import ru.optima.persist.model.User;
 import ru.optima.persist.repo.UserRepository;
 import ru.optima.warning.UserNotFoundException;
@@ -40,6 +40,11 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
+    public User addUser(User user){
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return userRepository.save(user);
+    }
+
     public void edit(User user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
@@ -67,4 +72,7 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(id);
     }
 
+    public User updateUser(User user) {
+        return userRepository.save(user);
+    }
 }

@@ -1,7 +1,7 @@
 package ru.optima.service;
 
 import org.springframework.stereotype.Service;
-import ru.optima.controller.repr.WorkRepr;
+import ru.optima.repr.WorkRepr;
 
 import java.util.List;
 import java.util.Optional;

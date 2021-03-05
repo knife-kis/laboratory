@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import ru.optima.controller.repr.UserRepr;
+import ru.optima.repr.UserRepr;
 import ru.optima.persist.model.User;
 import ru.optima.persist.repo.RoleRepository;
 import ru.optima.service.UserService;

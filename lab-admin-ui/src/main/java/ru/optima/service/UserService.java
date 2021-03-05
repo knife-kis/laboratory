@@ -1,7 +1,7 @@
 package ru.optima.service;
 
 import org.springframework.stereotype.Service;
-import ru.optima.controller.repr.UserRepr;
+import ru.optima.repr.UserRepr;
 import ru.optima.persist.model.User;
 
 import java.util.List;

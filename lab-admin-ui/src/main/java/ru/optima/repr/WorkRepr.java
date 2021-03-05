@@ -1,4 +1,4 @@
-package ru.optima.controller.repr;
+package ru.optima.repr;
 
 import ru.optima.persist.model.Work;
 import ru.optima.persist.model.User;

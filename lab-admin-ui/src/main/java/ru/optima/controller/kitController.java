@@ -5,10 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.optima.controller.repr.UserRepr;
-import ru.optima.persist.model.User;
+import ru.optima.repr.UserRepr;
 import ru.optima.persist.model.equipments.Bag;
-import ru.optima.service.UserService;
 import ru.optima.service.UserServiceImpl;
 
 import java.security.Principal;

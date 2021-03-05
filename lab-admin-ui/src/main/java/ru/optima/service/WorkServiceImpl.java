@@ -3,7 +3,7 @@ package ru.optima.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.optima.controller.repr.WorkRepr;
+import ru.optima.repr.WorkRepr;
 import ru.optima.persist.model.Work;
 import ru.optima.persist.repo.WorkRepository;
 

@@ -4,11 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import ru.optima.controller.repr.EquipmentRepr;
-import ru.optima.controller.repr.UserRepr;
-import ru.optima.controller.repr.WorkRepr;
+import ru.optima.repr.EquipmentRepr;
 import ru.optima.service.EquipmentService;
-import ru.optima.service.WorkService;
 import ru.optima.warning.NotFoundException;
 
 import javax.validation.Valid;
