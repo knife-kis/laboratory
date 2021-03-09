@@ -19,7 +19,7 @@ public class BagController {
     }
 
     @GetMapping
-    public String showBagPage(Model model){
+    public String showBagPage(Model model) {
         model.addAttribute("bag", bag);
         return "bag";
     }

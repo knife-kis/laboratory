@@ -28,7 +28,7 @@ public class EquipmentController {
     }
 
     @GetMapping("/equipment/{id}/edit")
-    public String adminEditEquipment(Model model, @PathVariable("id") Long id){
+    public String adminEditEquipment(Model model, @PathVariable("id") Long id) {
         model.addAttribute("edit", true);
         model.addAttribute("activePage", "Equipment");
         model.addAttribute("equipment", equipmentService.findById(id).orElseThrow(NotFoundException::new));

@@ -22,7 +22,6 @@ public class EquipmentServiceImpl implements EquipmentService {
         this.equipmentRepository = equipmentRepository;
     }
 
-
     public void save(EquipmentRepr equipmentRepr) {
         Equipment equipment = new Equipment();
         equipment.setId(equipmentRepr.getId());

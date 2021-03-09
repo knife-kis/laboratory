@@ -29,8 +29,6 @@ public class UserRepr {
 
     private List<Work> works;
 
-
-
     public UserRepr() {
     }
 

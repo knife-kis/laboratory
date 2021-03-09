@@ -25,12 +25,11 @@ public class kitController {
     }
 
     @GetMapping("/create")
-    public String showBagPage(Principal principal, Model model){
+    public String showBagPage(Principal principal, Model model) {
         UserRepr user = userServiceImpl.findByLastName(principal.getName()).get();
         model.addAttribute("user", user);
         return "kit_form";
     }
-
 
 
 }

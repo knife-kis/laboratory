@@ -12,35 +12,40 @@
     <div th:replace="fragments/sidebar :: sidebar"></div>
 
     <div class="content p-4">
-        <h2 class="mb-4" th:if="${edit}" >Редактирование пользователя</h2>
-        <h2 class="mb-4" th:if="${create}" >Create user</h2>
+        <h2 class="mb-4" th:if="${edit}">Редактирование пользователя</h2>
+        <h2 class="mb-4" th:if="${create}">Create user</h2>
 
         <form th:if="${create}" th:object="${user}" method="post" th:action="@{/admin/user/create}">
             <div class="card mb-4">
                 <div class="card-body">
                     <input th:type="hidden" th:field="*{id}">
                     <div class="form-group">
-                        <label for="firstname">First name</label>
-                        <input th:field="*{firstName}" type="text" class="form-control" id="firstname" placeholder="Enter user first name">
+                        <label for="firstname">Имя</label>
+                        <input th:field="*{firstName}" type="text" class="form-control" id="firstname"
+                               placeholder="Иван">
                     </div>
                     <div class="form-group">
-                        <label for="password">Password</label>
-                        <input th:field="*{password}" type="password" class="form-control" id="password" placeholder="Password" required>
+                        <label for="lastname">Фамилия</label>
+                        <input th:field="*{lastName}" type="text" class="form-control" id="lastname"
+                               placeholder="Иванов">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Пароль</label>
+                        <input th:field="*{password}" type="password" class="form-control" id="password"
+                               placeholder="Пароль" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input th:field="*{email}" type="text" class="form-control" id="email" placeholder="Enter user email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="lastname">Last name</label>
-                        <input th:field="*{lastName}" type="text" class="form-control" id="lastname" placeholder="Enter user last name">
+                        <input th:field="*{email}" type="text" class="form-control" id="email"
+                               placeholder="ivan@mail.ru">
                     </div>
                     <div class="form-group">
                         <label for="phone">Телефон</label>
-                        <input th:field="*{phone}" type="text" class="form-control" id="phone" placeholder="Введите ваш телефон">
+                        <input th:field="*{phone}" type="text" class="form-control" id="phone"
+                               placeholder="89996662211">
                     </div>
-                    <div class="form-group" >
-                        <label for="roles">User roles</label>
+                    <div class="form-group">
+                        <label for="roles">Роли</label>
                         <select multiple class="form-control" id="roles" th:field="*{roles}" required>
                             <option th:each="role : ${roles}"
                                     th:text="${role.name}"
@@ -61,26 +66,30 @@
                     <input th:type="hidden" th:field="*{id}">
                     <div class="form-group">
                         <label for="firstname">First name</label>
-                        <input th:field="*{firstName}" type="text" class="form-control" id="firstname1" placeholder="Имя">
+                        <input th:field="*{firstName}" type="text" class="form-control" id="firstname1"
+                               placeholder="Евгений">
                     </div>
                     <div class="form-group">
                         <label for="lastname">Last name</label>
-                        <input th:field="*{lastName}" type="text" class="form-control" id="lastname1" placeholder="Фамилия">
+                        <input th:field="*{lastName}" type="text" class="form-control" id="lastname1"
+                               placeholder="Евген">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input th:field="*{password}" type="password" class="form-control" id="password1" placeholder="Пароль" required>
+                        <input th:field="*{password}" type="password" class="form-control" id="password1"
+                               placeholder="Пароль" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input th:field="*{email}" type="text" class="form-control" id="email1" placeholder="Email" required>
+                        <input th:field="*{email}" type="text" class="form-control" id="email1" placeholder="Evgen@mail.ru"
+                               required>
                     </div>
                     <div class="form-group">
                         <label for="phone">Телефон</label>
-                        <input th:field="*{phone}" type="text" class="form-control" id="phone1" placeholder="Телефон">
+                        <input th:field="*{phone}" type="text" class="form-control" id="phone1" placeholder="87771110055">
                     </div>
-                    <div class="form-group" >
-                        <label for="roles">User roles</label>
+                    <div class="form-group">
+                        <label for="roles">Роль</label>
                         <select multiple class="form-control" id="roles1" th:field="*{roles}" required>
                             <option th:each="role : ${roles}"
                                     th:text="${role.name}"
@@ -91,7 +100,7 @@
                     </div>
                 </div>
                 <div class="card-footer bg-white">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Добавить</button>
                 </div>
             </div>
         </form>

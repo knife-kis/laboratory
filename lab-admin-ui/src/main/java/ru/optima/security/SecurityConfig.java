@@ -30,6 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void setUserDetailsService(UserDetailsService userAuthService) {
         this.userDetailsService = userAuthService;
     }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -50,6 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/login")
                 .permitAll();
     }
+
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

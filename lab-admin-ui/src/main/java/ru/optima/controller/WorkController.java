@@ -28,7 +28,7 @@ public class WorkController {
     }
 
     @GetMapping("work/{id}/edit")
-    public String adminEditWork(Model model, @PathVariable("id") Long id){
+    public String adminEditWork(Model model, @PathVariable("id") Long id) {
         model.addAttribute("edit", true); // ??
         model.addAttribute("activePage", "Work"); // TODO ?
         model.addAttribute("work", workService.findById(id).orElseThrow(NotFoundException::new));

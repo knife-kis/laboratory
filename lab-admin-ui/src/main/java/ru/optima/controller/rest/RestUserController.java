@@ -33,19 +33,19 @@ public class RestUserController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<User> addUser(User user){
+    public ResponseEntity<User> addUser(User user) {
         User u = userServiceImpl.addUser(user);
-        return new ResponseEntity<>(u,HttpStatus.CREATED);
+        return new ResponseEntity<>(u, HttpStatus.CREATED);
     }
 
     @PutMapping("/update")
-    public ResponseEntity<User> updateUser(User user){
+    public ResponseEntity<User> updateUser(User user) {
         User u = userServiceImpl.updateUser(user);
-        return new ResponseEntity<>(u,HttpStatus.OK);
+        return new ResponseEntity<>(u, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable("id") Long id){
+    public ResponseEntity<?> deleteUser(@PathVariable("id") Long id) {
         userServiceImpl.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

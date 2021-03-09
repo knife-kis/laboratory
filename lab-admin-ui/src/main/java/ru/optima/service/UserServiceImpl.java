@@ -40,12 +40,12 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
-    public User addUser(User user){
+    public User addUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
-    public void edit(User user){
+    public void edit(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
