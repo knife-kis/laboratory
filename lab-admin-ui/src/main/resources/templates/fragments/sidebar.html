@@ -4,7 +4,7 @@
 
 <body class="bg-light">
 
-    <div th:if="Role" th:fragment="sidebar" class="sidebar sidebar-dark bg-dark">
+    <div th:fragment="sidebar" class="sidebar sidebar-dark bg-dark">
         <ul class="list-unstyled">
             <li th:classappend="${activePage == 'Users'} ? active"><a th:href="@{/admin/users}">
                 <i class="fa fa-user"></i> Пользователи</a></li>
