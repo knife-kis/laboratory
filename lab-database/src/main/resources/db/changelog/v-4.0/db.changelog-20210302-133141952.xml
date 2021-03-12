@@ -19,13 +19,4 @@
     <changeSet author="maks_tarn (generated)" id="1614691909641-4">
         <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="kits" constraintName="FKqbs5ofg9ystjent7kd54bxmuv" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="users" validate="true"/>
     </changeSet>
-    <changeSet author="maks_tarn (generated)" id="1614691909641-5">
-        <dropForeignKeyConstraint baseTableName="bag_equipments" constraintName="FK2n7ty9017mpc5o7x8hsjuvtg"/>
-    </changeSet>
-    <changeSet author="maks_tarn (generated)" id="1614691909641-6">
-        <dropForeignKeyConstraint baseTableName="bag_equipments" constraintName="FKq3tsbsrxfxm5qn6p2u8d5fi7h"/>
-    </changeSet>
-    <changeSet author="maks_tarn (generated)" id="1614691909641-7">
-        <dropTable tableName="bag_equipments"/>
-    </changeSet>
 </databaseChangeLog>

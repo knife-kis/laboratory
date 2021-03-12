@@ -1,3 +1,4 @@
+<!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
@@ -10,17 +11,12 @@
 <div class="d-flex">
     <div th:replace="fragments/sidebar :: sidebar"></div>
 
-    <div class="topnav">
-        <a class="active" href="#">Список</a>
-        <a href="#news">Журнал</a>
-
-    </div>
     <div class="content p-4">
-        <h2 class="mb-4">Пользователи</h2>
+        <h2 class="mb-4">Users</h2>
         <div class="card mb-4">
             <div class="card-body">
                 <form class="form-group" th:action="@{/admin/user/create}">
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-user-plus" aria-hidden="true"></i>   Создать</button>
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-user-plus" aria-hidden="true"></i> Создать</button>
                 </form>
                 <table id="users" class="table table-hover" cellspacing="0" width="100%">
                     <thead>
@@ -35,7 +31,6 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
                     <tr th:each="usr : ${users}">
                         <td th:text="${usr.id}"></td>
                         <td th:text="${usr.firstName}"></td>
@@ -57,7 +52,7 @@
                                 </button>
                             </form>
                         </td>
-                    </tr></tr>
+                    </tr>
                     </tbody>
                 </table>
             </div>

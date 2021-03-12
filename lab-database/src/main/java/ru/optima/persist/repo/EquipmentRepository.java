@@ -7,5 +7,5 @@ import ru.optima.persist.model.Work;
 
 @Repository
 public interface EquipmentRepository extends JpaRepository<Equipment, Long> {
-    Work findById(long id);
+    Equipment findById(long id);
 }

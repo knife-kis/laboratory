@@ -4,13 +4,13 @@
 
 <body class="bg-light">
 
-    <div th:if="Role" th:fragment="sidebar" class="sidebar sidebar-dark bg-dark">
+    <div th:fragment="sidebar" class="sidebar sidebar-dark bg-dark">
         <ul class="list-unstyled">
-            <li th:classappend="${activePage == 'Users'} ? active"><a th:href="@{/admin/users}">
+            <li th:classappend="${activePage == 'Users'} ? active"><a th:href="@{/users-guest}">
                 <i class="fa fa-user"></i> Пользователи</a></li>
-            <li th:classappend="${activePage == 'Works'} ? active"><a th:href="@{/admin/works}">
+            <li th:classappend="${activePage == 'Works'} ? active"><a th:href="@{/works-guest}">
                 <i class="fa fa-suitcase" aria-hidden="true"></i> Список работ</a></li>
-            <li th:classappend="${activePage == 'Equipments'} ? active"><a th:href="@{/admin/equipments}">
+            <li th:classappend="${activePage == 'Equipments'} ? active"><a th:href="@{/equipments-guest}">
                 <i class="fa fa-wrench" aria-hidden="true"></i> Список оборудования</a></li>
         </ul>
     </div>
