@@ -1,8 +1,12 @@
 package ru.optima.persist.model.equipments;
 
 import org.hibernate.annotations.Cascade;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.web.context.WebApplicationContext;
 import ru.optima.persist.model.User;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,9 +28,32 @@ public class Kit {
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<Equipment> equipments;
 
-    public Kit(Bag bag, User user) {
+
+
+    public Kit() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
         this.user = user;
-        this.equipments = new ArrayList<>();
-        this.equipments.addAll(bag.getEquipments());
+    }
+
+    public List<Equipment> getEquipments() {
+        return equipments;
+    }
+
+    public void setEquipments(List<Equipment> equipments) {
+        this.equipments = equipments;
     }
 }

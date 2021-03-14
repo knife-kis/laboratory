@@ -4,30 +4,36 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import ru.optima.beans.Bag;
 import ru.optima.repr.EquipmentRepr;
 import ru.optima.service.EquipmentService;
+import ru.optima.service.EquipmentServiceImpl;
 import ru.optima.warning.NotFoundException;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
 
 @Controller
-@RequestMapping("/admin")
 public class EquipmentController {
 
-    private EquipmentService equipmentService;
+    private Bag bag;
+    private EquipmentServiceImpl equipmentService;
 
-    public EquipmentController(EquipmentService equipmentService) {
+    public EquipmentController(Bag bag, EquipmentServiceImpl equipmentService) {
+        this.bag = bag;
         this.equipmentService = equipmentService;
     }
 
-    @GetMapping("/equipments")
+    @GetMapping("/admin/equipments")
     public String adminEquipmentsPage(Model model) {
         model.addAttribute("activePage", "Equipments");
         model.addAttribute("equipments", equipmentService.findAll());
         return "equipments";
     }
 
-    @GetMapping("/equipment/{id}/edit")
+    @GetMapping("/admin/equipment/{id}/edit")
     public String adminEditEquipment(Model model, @PathVariable("id") Long id) {
         model.addAttribute("edit", true);
         model.addAttribute("activePage", "Equipment");
@@ -35,7 +41,7 @@ public class EquipmentController {
         return "equipment_form";
     }
 
-    @GetMapping("/equipment/create")
+    @GetMapping("/admin/equipment/create")
     public String adminCreateEquipment(Model model) {
         model.addAttribute("create", true);
         model.addAttribute("activePage", "Equipments"); // TODO ?
@@ -43,7 +49,7 @@ public class EquipmentController {
         return "equipment_form";
     }
 
-    @PostMapping("/equipment")
+    @PostMapping("/admin/equipment")
     public String adminUpsertEquipment(@Valid EquipmentRepr equipment, Model model, BindingResult bindingResult) {
         model.addAttribute("activePage", "Equipments");
 
@@ -55,10 +61,26 @@ public class EquipmentController {
         return "redirect:/admin/equipments";
     }
 
-    @DeleteMapping("/equipment/{id}/delete")
+    @DeleteMapping("/admin/equipment/{id}/delete")
     public String adminDeleteEquipment(Model model, @PathVariable("id") Long id) {
         equipmentService.delete(id);
         return "redirect:/admin/equipments";
+    }
+
+    @GetMapping("/equipments_guest")
+    public String EquipmentsPage(Model model) {
+        model.addAttribute("activePage", "Equipments");
+        model.addAttribute("equipments", equipmentService.findAll());
+        return "equipments_guest";
+    }
+
+    @GetMapping("/equipments_guest/bag/add/{equipmentId}")
+    public void addEquipmentToBagById(@PathVariable Long equipmentId, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        bag.add(equipmentService.findById(equipmentId).orElseThrow(NotFoundException::new));
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        System.out.println(bag.getEquipments());
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        response.sendRedirect(request.getHeader("referer"));
     }
 
 }

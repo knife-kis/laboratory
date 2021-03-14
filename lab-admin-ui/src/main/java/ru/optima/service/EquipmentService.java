@@ -1,6 +1,7 @@
 package ru.optima.service;
 
 import org.springframework.stereotype.Service;
+import ru.optima.persist.model.equipments.Equipment;
 import ru.optima.repr.EquipmentRepr;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public interface EquipmentService {
     List<EquipmentRepr> findAll();
 
     Optional<EquipmentRepr> findById(Long id);
+    Optional<Equipment> findByEId(Long id);
 
     void delete(Long id);
 }

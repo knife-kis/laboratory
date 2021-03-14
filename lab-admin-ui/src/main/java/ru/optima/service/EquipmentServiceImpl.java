@@ -48,6 +48,11 @@ public class EquipmentServiceImpl implements EquipmentService {
     }
 
     @Override
+    public Optional<Equipment> findByEId(Long id) {
+        return equipmentRepository.findById(id);
+    }
+
+    @Override
     public void delete(Long id) {
         equipmentRepository.deleteById(id);
     }
