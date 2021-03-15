@@ -12,7 +12,7 @@ import java.util.*;
 
 @Component
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
-public class Bag {
+public class Kit {
     private ArrayList<EquipmentRepr> equipments;
 
     @PostConstruct
@@ -31,10 +31,10 @@ public class Bag {
         equipments.add(equipment);
     }
 
-    public Bag() {
+    public Kit() {
     }
 
-    public Bag(ArrayList<EquipmentRepr> equipments) {
+    public Kit(ArrayList<EquipmentRepr> equipments) {
         this.equipments = equipments;
     }
 

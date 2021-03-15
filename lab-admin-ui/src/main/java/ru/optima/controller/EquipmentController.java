@@ -4,9 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import ru.optima.beans.Bag;
+import ru.optima.beans.Kit;
 import ru.optima.repr.EquipmentRepr;
-import ru.optima.service.EquipmentService;
 import ru.optima.service.EquipmentServiceImpl;
 import ru.optima.warning.NotFoundException;
 
@@ -18,10 +17,10 @@ import java.io.IOException;
 @Controller
 public class EquipmentController {
 
-    private Bag bag;
+    private Kit bag;
     private EquipmentServiceImpl equipmentService;
 
-    public EquipmentController(Bag bag, EquipmentServiceImpl equipmentService) {
+    public EquipmentController(Kit bag, EquipmentServiceImpl equipmentService) {
         this.bag = bag;
         this.equipmentService = equipmentService;
     }
@@ -74,7 +73,7 @@ public class EquipmentController {
         return "equipments_guest";
     }
 
-    @GetMapping("/equipments_guest/bag/add/{equipmentId}")
+    @GetMapping("/equipments_guest/kit/add/{equipmentId}")
     public void addEquipmentToBagById(@PathVariable Long equipmentId, HttpServletRequest request, HttpServletResponse response) throws IOException {
         bag.add(equipmentService.findById(equipmentId).orElseThrow(NotFoundException::new));
         response.sendRedirect(request.getHeader("referer"));

@@ -32,7 +32,7 @@
                     </thead>
                     <tbody>
                     <tr th:each="equ : ${equipments}">
-                        <td><a class="btn-primary" th:href="@{'/equipments_guest/bag/add/' + ${equ.id}}">Добавить в список</a></td>
+                        <td><a class="btn-primary" th:href="@{'/equipments_guest/kit/add/' + ${equ.id}}">Добавить в список</a></td>
                         <td th:text="${equ.id}"></td>
                         <td th:text="${equ.name}"></td>
                         <td th:text="${equ.inventoruNumber}"></td>
@@ -44,8 +44,8 @@
                 </table>
             </div>
             <div class="card-body">
-                <span th:unless="${@bag.equipments.size() > 0}">Ваша сумка не собрана</span>
-                <table id="equipments1" class="table table-hover" cellspacing="0" width="100%" th:if="${@bag.equipments.size() > 0}">
+                <span th:unless="${@kit.equipments.size() > 0}">Ваша сумка не собрана</span>
+                <table id="equipments1" class="table table-hover" cellspacing="0" width="100%" th:if="${@kit.equipments.size() > 0}">
                     <thead>
                     <tr>
                         <th>Название оборудования</th>
@@ -53,9 +53,9 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="be : ${@bag.getEquipments()}">
-                        <td th:text="${be.getName()}"></td>
-                        <td th:text="${be.getFactoryNumber()}"></td>
+                    <tr th:each="k : ${@kit.getEquipments()}">
+                        <td th:text="${k.getName()}"></td>
+                        <td th:text="${k.getFactoryNumber()}"></td>
                     </tr>
                     </tbody>
                 </table>
