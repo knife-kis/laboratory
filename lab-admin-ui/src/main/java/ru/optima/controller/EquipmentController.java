@@ -77,9 +77,6 @@ public class EquipmentController {
     @GetMapping("/equipments_guest/bag/add/{equipmentId}")
     public void addEquipmentToBagById(@PathVariable Long equipmentId, HttpServletRequest request, HttpServletResponse response) throws IOException {
         bag.add(equipmentService.findById(equipmentId).orElseThrow(NotFoundException::new));
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        System.out.println(bag.getEquipments());
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         response.sendRedirect(request.getHeader("referer"));
     }
 
