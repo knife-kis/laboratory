@@ -1,5 +1,6 @@
 package ru.optima.persist.model;
 import ru.optima.persist.model.equipments.Equipment;
+import ru.optima.persist.model.equipments.Kit;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -47,19 +48,34 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "equipments_id"))
     private List<Equipment> equipments;
 
-    public User() {
-    }
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "users_kits",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "kits_id"))
+    private List<Kit> kits;
 
-    public User(Long id, String password, Collection<Role> roles, List<Work> works, List<Equipment> equipments, String email, String firstName, String lastName, String phone) {
+    public User(Long id, String password, String email, String firstName, String lastName, String phone, Collection<Role> roles, List<Work> works, List<Equipment> equipments, List<Kit> kits) {
         this.id = id;
         this.password = password;
-        this.roles = roles;
-        this.works = works;
-        this.equipments = equipments;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
+        this.roles = roles;
+        this.works = works;
+        this.equipments = equipments;
+        this.kits = kits;
+    }
+
+    public User() {
+    }
+
+    public List<Kit> getKits() {
+        return kits;
+    }
+
+    public void setKits(List<Kit> kits) {
+        this.kits = kits;
     }
 
     public Long getId() {

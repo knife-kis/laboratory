@@ -65,7 +65,6 @@ public class UserController {
         if (bindingResult.hasErrors()) {
             return "user_form";
         }
-
         userService.save(user);
         return "redirect:/admin/users";
     }

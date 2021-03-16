@@ -4,9 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.optima.persist.repo.UserRepository;
 import ru.optima.repr.UserRepr;
 import ru.optima.persist.model.User;
-import ru.optima.persist.repo.UserRepository;
+import ru.optima.persist.repo.KitRepository;
 import ru.optima.warning.UserNotFoundException;
 
 import java.util.List;

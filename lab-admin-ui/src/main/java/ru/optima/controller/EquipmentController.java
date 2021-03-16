@@ -4,9 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import ru.optima.beans.Kit;
+import ru.optima.repr.KitRepr;
 import ru.optima.repr.EquipmentRepr;
 import ru.optima.service.EquipmentServiceImpl;
+import ru.optima.service.UserServiceImpl;
 import ru.optima.warning.NotFoundException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,12 +18,12 @@ import java.io.IOException;
 @Controller
 public class EquipmentController {
 
-    private Kit bag;
     private EquipmentServiceImpl equipmentService;
+    private final UserServiceImpl userServiceImpl;
 
-    public EquipmentController(Kit bag, EquipmentServiceImpl equipmentService) {
-        this.bag = bag;
+    public EquipmentController(EquipmentServiceImpl equipmentService, UserServiceImpl userServiceImpl) {
         this.equipmentService = equipmentService;
+        this.userServiceImpl = userServiceImpl;
     }
 
     @GetMapping("/admin/equipments")
@@ -71,12 +72,6 @@ public class EquipmentController {
         model.addAttribute("activePage", "Equipments");
         model.addAttribute("equipments", equipmentService.findAll());
         return "equipments_guest";
-    }
-
-    @GetMapping("/equipments_guest/kit/add/{equipmentId}")
-    public void addEquipmentToBagById(@PathVariable Long equipmentId, HttpServletRequest request, HttpServletResponse response) throws IOException {
-        bag.add(equipmentService.findById(equipmentId).orElseThrow(NotFoundException::new));
-        response.sendRedirect(request.getHeader("referer"));
     }
 
 }

@@ -37,14 +37,13 @@ public class Equipment implements Serializable {
     @ManyToMany(mappedBy = "equipments")
     private List<User> users;
 
-    @ManyToOne
-    @JoinColumn(name = "kit_id")
-    private Kit kit;
+    @ManyToMany(mappedBy = "equipments")
+    private List<Kit> kits;
 
     public Equipment() {
     }
 
-    public Equipment(Long id, String name, String inventoruNumber, String factoryNumber, String verificationNumber, Date verificationDate, Date verificationDateEnd, List<User> users) {
+    public Equipment(Long id, String name, String inventoruNumber, String factoryNumber, String verificationNumber, Date verificationDate, Date verificationDateEnd, List<User> users, List<Kit> kits) {
         this.id = id;
         this.name = name;
         this.inventoruNumber = inventoruNumber;
@@ -53,6 +52,15 @@ public class Equipment implements Serializable {
         this.verificationDate = verificationDate;
         this.verificationDateEnd = verificationDateEnd;
         this.users = users;
+        this.kits = kits;
+    }
+
+    public List<Kit> getKits() {
+        return kits;
+    }
+
+    public void setKits(List<Kit> kits) {
+        this.kits = kits;
     }
 
     public Long getId() {
