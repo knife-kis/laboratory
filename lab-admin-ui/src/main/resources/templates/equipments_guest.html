@@ -44,8 +44,8 @@
                 </table>
             </div>
             <div class="card-body">
-                <span th:unless="${@kitRepr.equipments.size() > 0}">Ваша сумка не собрана</span>
-                <table id="equipments1" class="table table-hover" cellspacing="0" width="100%" th:if="${@kitRepr.equipments.size() > 0}">
+<!--                <span th:unless="@{/equipments_guest/kit/add/{equipmentId}(equipmentId=${kit.id})}">Ваша сумка не собрана</span>-->
+                <table id="equipments1" class="table table-hover" cellspacing="0" width="100%" >
                     <thead>
                     <tr>
                         <th>Название оборудования</th>
@@ -53,9 +53,9 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="k : ${@kitRepr.getEquipments()}">
-                        <td th:text="${k.getName()}"></td>
-                        <td th:text="${k.getFactoryNumber()}"></td>
+                    <tr th:each="k : ${kits}">
+                        <td th:text="${k.id}"></td>
+                        <td th:text="${k.getEquipments()}"></td>
                     </tr>
                     </tbody>
                 </table>

@@ -31,7 +31,7 @@ public class KitController {
     }
 
     @GetMapping("/equipments_guest/kit/add/{equipmentId}")
-    public void addEquipmentToBagById(
+    public void addEquipmentToBagById(Model model,
             @PathVariable Long equipmentId,
             @Valid Kit kit,
             HttpServletRequest request,

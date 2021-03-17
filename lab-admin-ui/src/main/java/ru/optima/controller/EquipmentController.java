@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.optima.repr.KitRepr;
 import ru.optima.repr.EquipmentRepr;
 import ru.optima.service.EquipmentServiceImpl;
+import ru.optima.service.KitService;
 import ru.optima.service.UserServiceImpl;
 import ru.optima.warning.NotFoundException;
 
@@ -19,11 +20,11 @@ import java.io.IOException;
 public class EquipmentController {
 
     private EquipmentServiceImpl equipmentService;
-    private final UserServiceImpl userServiceImpl;
+    private final KitService kitService;
 
-    public EquipmentController(EquipmentServiceImpl equipmentService, UserServiceImpl userServiceImpl) {
+    public EquipmentController(EquipmentServiceImpl equipmentService, KitService kitService) {
         this.equipmentService = equipmentService;
-        this.userServiceImpl = userServiceImpl;
+        this.kitService = kitService;
     }
 
     @GetMapping("/admin/equipments")
@@ -71,6 +72,7 @@ public class EquipmentController {
     public String EquipmentsPage(Model model) {
         model.addAttribute("activePage", "Equipments");
         model.addAttribute("equipments", equipmentService.findAll());
+        model.addAttribute("kits", kitService.findAll());
         return "equipments_guest";
     }
 
