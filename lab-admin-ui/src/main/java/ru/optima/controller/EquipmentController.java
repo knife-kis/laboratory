@@ -1,9 +1,11 @@
 package ru.optima.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import ru.optima.beans.PackageEquipments;
 import ru.optima.repr.KitRepr;
 import ru.optima.repr.EquipmentRepr;
 import ru.optima.service.EquipmentServiceImpl;
@@ -19,10 +21,13 @@ import java.io.IOException;
 @Controller
 public class EquipmentController {
 
+    private PackageEquipments packageEquipments;
     private EquipmentServiceImpl equipmentService;
     private final KitService kitService;
 
-    public EquipmentController(EquipmentServiceImpl equipmentService, KitService kitService) {
+    @Autowired
+    public EquipmentController(PackageEquipments packageEquipments, EquipmentServiceImpl equipmentService, KitService kitService) {
+        this.packageEquipments = packageEquipments;
         this.equipmentService = equipmentService;
         this.kitService = kitService;
     }
@@ -69,11 +74,27 @@ public class EquipmentController {
     }
 
     @GetMapping("/equipments_guest")
-    public String EquipmentsPage(Model model) {
+    public String equipmentsPage(Model model) {
         model.addAttribute("activePage", "Equipments");
         model.addAttribute("equipments", equipmentService.findAll());
         model.addAttribute("kits", kitService.findAll());
         return "equipments_guest";
+    }
+
+    @GetMapping("/equipments_guest/package")
+    public String packageEquipmentsPage(Model model) {
+        model.addAttribute("activePage", "Equipments");
+        model.addAttribute("equipments", equipmentService.findAll());
+        return "equipments_guest/package";
+    }
+
+    @GetMapping("/equipments_guest/package/add/{equipmentId}")
+    public void addEquipmentToBagById(@PathVariable Long equipmentId, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        packageEquipments.add(equipmentService.findById(equipmentId).orElseThrow(NotFoundException::new));
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        System.out.println(packageEquipments.getEquipments());
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        response.sendRedirect(request.getHeader("referer"));
     }
 
 }

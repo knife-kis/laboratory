@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.optima.repr.EquipmentRepr;
 import ru.optima.persist.model.equipments.Equipment;
 import ru.optima.persist.repo.EquipmentRepository;
+import ru.optima.warning.NotFoundException;
 
 import java.util.List;
 import java.util.Optional;
@@ -48,8 +49,8 @@ public class EquipmentServiceImpl implements EquipmentService {
     }
 
     @Override
-    public Optional<Equipment> findByEId(Long id) {
-        return equipmentRepository.findById(id);
+    public Equipment findByEId(Long id) {
+        return equipmentRepository.findById(id).orElseThrow(() -> new NotFoundException());
     }
 
     @Override

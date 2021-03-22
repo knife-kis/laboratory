@@ -25,11 +25,10 @@ public class KitServiceImpl implements KitService {
     private KitRepository kitRepository;
     private EquipmentRepository equipmentRepository;
 
-    @Autowired
-    public void setUserRepository(KitRepository userRepository) {
-        this.kitRepository = userRepository;
+    public KitServiceImpl(KitRepository kitRepository, EquipmentRepository equipmentRepository) {
+        this.kitRepository = kitRepository;
+        this.equipmentRepository = equipmentRepository;
     }
-
 
     public void save(KitRepr kitRepr) {
         Kit kit = new Kit();
@@ -39,16 +38,19 @@ public class KitServiceImpl implements KitService {
         kitRepository.save(kit);
     }
 
-    public void add(Equipment equipment, Kit kit){
-        List<Equipment> equipments = equipmentRepository.findAll();
+    public void addEquipment(Equipment equipment, Kit kit){
+        List<Equipment> equipments = kit.getEquipments();
         for (Equipment e : equipments) {
             if (e.getId().equals(equipment.getId())){
+                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!");
                 return;
             }
+            System.out.println(equipments);
+            equipments.add(equipment);
+            kit.setEquipments(equipments);
+            System.out.println(kit.getId());
+            kitRepository.save(kit);
         }
-        equipments.add(equipment);
-        kit.setEquipments(equipments);
-        kitRepository.save(kit);
     }
 
     @Override

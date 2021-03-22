@@ -10,5 +10,4 @@ import java.util.List;
 @Repository
 public interface EquipmentRepository extends JpaRepository<Equipment, Long> {
     Equipment findById(long id);
-    List<Equipment> findAll();
 }

@@ -23,7 +23,6 @@ public class Kit {
             inverseJoinColumns = @JoinColumn(name = "equipments_id"))
     private List<Equipment> equipments;
 
-
     public Kit() {
     }
 
