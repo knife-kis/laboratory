@@ -24,10 +24,10 @@ public class EquipmentController {
 
     private PackageEquipments packageEquipments;
     private EquipmentServiceImpl equipmentService;
-    private KitServiceImpl kitService;
+    private KitService kitService;
 
     @Autowired
-    public EquipmentController(PackageEquipments packageEquipments, EquipmentServiceImpl equipmentService, KitServiceImpl kitService) {
+    public EquipmentController(PackageEquipments packageEquipments, EquipmentServiceImpl equipmentService, KitService kitService) {
         this.packageEquipments = packageEquipments;
         this.equipmentService = equipmentService;
         this.kitService = kitService;

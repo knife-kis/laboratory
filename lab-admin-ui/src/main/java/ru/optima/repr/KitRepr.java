@@ -1,16 +1,10 @@
 package ru.optima.repr;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
-import org.springframework.stereotype.Component;
-import org.springframework.web.context.WebApplicationContext;
 import ru.optima.beans.PackageEquipments;
 import ru.optima.persist.model.User;
 import ru.optima.persist.model.equipments.Equipment;
 import ru.optima.persist.model.equipments.Kit;
-import ru.optima.repr.EquipmentRepr;
 
-import javax.annotation.PostConstruct;
 import java.util.*;
 
 public class KitRepr {
@@ -33,7 +27,10 @@ public class KitRepr {
     }
 
     public KitRepr(Kit kit) {
-
+        this.id = kit.getId();
+        this.equipments = kit.getEquipments();
+        this.name = kit.getName();
+        this.user = kit.getUser();
     }
 
     public User getUser() {

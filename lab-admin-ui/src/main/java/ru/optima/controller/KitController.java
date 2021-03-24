@@ -30,10 +30,10 @@ public class KitController {
     }
 
     @PostMapping("/equipments_guest/create/kit")
-    public String addPackageEquipmentToKit(Principal principal, Model model) {
+    public String addPackageEquipmentToKit(Principal principal) {
         User user = userService.findByName(principal.getName());
-        KitRepr kit = new KitRepr(user, packageEquipments);
-        kitService.save(kit);
+        KitRepr kitRepr = new KitRepr(user, packageEquipments);
+        kitService.save(kitRepr);
         return "redirect:/equipments_guest";
     }
 

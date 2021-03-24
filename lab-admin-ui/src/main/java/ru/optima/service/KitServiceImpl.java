@@ -33,25 +33,11 @@ public class KitServiceImpl implements KitService {
     public void save(KitRepr kitRepr) {
         Kit kit = new Kit();
         kit.setId(kitRepr.getId());
+        kit.setName(kitRepr.getName());
         kit.setUser(kitRepr.getUser());
         kit.setEquipments(kitRepr.getEquipments());
         kitRepository.save(kit);
     }
-
-//    public void addEquipment(Equipment equipment, Kit kit){
-//        List<Equipment> equipments = kit.getEquipments();
-//        for (Equipment e : equipments) {
-//            if (e.getId().equals(equipment.getId())){
-//                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!");
-//                return;
-//            }
-//            System.out.println(equipments);
-//            equipments.add(equipment);
-//            kit.setEquipments(equipments);
-//            System.out.println(kit.getId());
-//            kitRepository.save(kit);
-//        }
-//    }
 
     @Override
     public List<KitRepr> findAll() {
