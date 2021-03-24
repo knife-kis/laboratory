@@ -42,11 +42,11 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "work_id"))
     private List<Work> works;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "users_equipments",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "equipments_id"))
-    private List<Equipment> equipments;
+//    @ManyToMany(fetch = FetchType.LAZY)
+//    @JoinTable(name = "users_equipments",
+//            joinColumns = @JoinColumn(name = "user_id"),
+//            inverseJoinColumns = @JoinColumn(name = "equipments_id"))
+//    private List<Equipment> equipments;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "users_kits",
@@ -54,7 +54,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "kits_id"))
     private List<Kit> kits;
 
-    public User(Long id, String password, String email, String firstName, String lastName, String phone, Collection<Role> roles, List<Work> works, List<Equipment> equipments, List<Kit> kits) {
+    public User(Long id, String password, String email, String firstName, String lastName, String phone, Collection<Role> roles, List<Work> works, List<Kit> kits) {
         this.id = id;
         this.password = password;
         this.email = email;
@@ -63,7 +63,7 @@ public class User {
         this.phone = phone;
         this.roles = roles;
         this.works = works;
-        this.equipments = equipments;
+//        this.equipments = equipments;
         this.kits = kits;
     }
 
@@ -111,13 +111,13 @@ public class User {
         this.works = works;
     }
 
-    public List<Equipment> getEquipments() {
-        return equipments;
-    }
-
-    public void setEquipments(List<Equipment> equipments) {
-        this.equipments = equipments;
-    }
+//    public List<Equipment> getEquipments() {
+//        return equipments;
+//    }
+//
+//    public void setEquipments(List<Equipment> equipments) {
+//        this.equipments = equipments;
+//    }
 
     public String getEmail() {
         return email;

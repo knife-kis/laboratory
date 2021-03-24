@@ -32,7 +32,7 @@ public class EquipmentServiceImpl implements EquipmentService {
         equipment.setVerificationDate(equipmentRepr.getVerificationDate());
         equipment.setVerificationDateEnd(equipmentRepr.getVerificationDateEnd());
         equipment.setVerificationNumber(equipmentRepr.getVerificationNumber());
-        equipment.setUsers(equipmentRepr.getUsers());
+//        equipment.setUsers(equipmentRepr.getUsers());
         equipmentRepository.save(equipment);
     }
 

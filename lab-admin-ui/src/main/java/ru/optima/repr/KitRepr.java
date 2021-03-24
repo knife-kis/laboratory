@@ -12,13 +12,12 @@ import ru.optima.repr.EquipmentRepr;
 import javax.annotation.PostConstruct;
 import java.util.*;
 
-//@Component
-//@Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class KitRepr {
 
     private Long id;
     private List<Equipment> equipments;
-    private List<User> user;
+    private String name;
+    private int count = 1;
 
     public KitRepr() {
     }
@@ -26,7 +25,15 @@ public class KitRepr {
     public KitRepr(Kit kit) {
         this.id = kit.getId();
         this.equipments = kit.getEquipments();
-        this.user = kit.getUser();
+        this.name = "Комплет №:" + count++;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Long getId() {
@@ -35,14 +42,6 @@ public class KitRepr {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public List<User> getUser() {
-        return user;
-    }
-
-    public void setUser(List<User> user) {
-        this.user = user;
     }
 
     public List<Equipment> getEquipments() {

@@ -1,7 +1,5 @@
 package ru.optima.persist.model.equipments;
 
-import ru.optima.persist.model.User;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -14,8 +12,8 @@ public class Kit {
     @Column(name = "id")
     private Long id;
 
-    @ManyToMany(mappedBy = "kits")
-    private List<User> user;
+    @Column(name = "name")
+    private String name;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "kits_equipments",
@@ -26,20 +24,20 @@ public class Kit {
     public Kit() {
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public List<User> getUser() {
-        return user;
-    }
-
-    public void setUser(List<User> user) {
-        this.user = user;
     }
 
     public List<Equipment> getEquipments() {

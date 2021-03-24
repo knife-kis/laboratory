@@ -28,7 +28,6 @@ public class EquipmentRepr {
         this.verificationNumber = equipment.getVerificationNumber();
         this.verificationDate = equipment.getVerificationDate();
         this.verificationDateEnd = equipment.getVerificationDateEnd();
-        this.users = equipment.getUsers();
     }
 
     public Long getId() {
