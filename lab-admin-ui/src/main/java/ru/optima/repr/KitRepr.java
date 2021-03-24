@@ -16,7 +16,7 @@ import java.util.*;
 public class KitRepr {
 
     private Long id;
-    private List<EquipmentRepr> equipments;
+    private List<Equipment> equipments;
     private String name;
     private User user;
     private int count = 1;
@@ -24,10 +24,10 @@ public class KitRepr {
     public KitRepr() {
     }
 
-    public KitRepr(User user, Kit kit, PackageEquipments pEquipments) {
+    public KitRepr(User user, PackageEquipments pEquipments) {
         this.user = user;
-        this.id = kit.getId();
         this.name = "Комплет №:" + count++;
+        this.equipments = new ArrayList<>();
         this.equipments.addAll(pEquipments.getEquipments());
         pEquipments.clear();
     }
@@ -40,11 +40,11 @@ public class KitRepr {
         return user;
     }
 
-    public List<EquipmentRepr> getEquipments() {
+    public List<Equipment> getEquipments() {
         return equipments;
     }
 
-    public void setEquipments(List<EquipmentRepr> equipments) {
+    public void setEquipments(List<Equipment> equipments) {
         this.equipments = equipments;
     }
 

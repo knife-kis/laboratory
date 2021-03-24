@@ -91,7 +91,7 @@ public class EquipmentController {
 
     @GetMapping("/equipments_guest/package/add/{equipmentId}")
     public void addEquipmentToBagById(@PathVariable Long equipmentId, HttpServletRequest request, HttpServletResponse response) throws IOException {
-        packageEquipments.add(equipmentService.findById(equipmentId).orElseThrow(NotFoundException::new));
+        packageEquipments.add(equipmentService.findByEId(equipmentId));
         System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         System.out.println(packageEquipments.getEquipments());
         System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");

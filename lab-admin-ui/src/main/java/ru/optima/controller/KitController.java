@@ -5,10 +5,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import ru.optima.beans.PackageEquipments;
+import ru.optima.persist.model.User;
 import ru.optima.persist.model.equipments.Kit;
 import ru.optima.repr.KitRepr;
 import ru.optima.service.EquipmentServiceImpl;
 import ru.optima.service.KitServiceImpl;
+import ru.optima.service.UserService;
 
 import java.security.Principal;
 
@@ -16,18 +19,21 @@ import java.security.Principal;
 public class KitController {
 
     private KitServiceImpl kitService;
-    private EquipmentServiceImpl equipmentService;
+    private UserService userService;
+    private PackageEquipments packageEquipments;
 
     @Autowired
-    public KitController(KitServiceImpl kitService, EquipmentServiceImpl equipmentService) {
+    public KitController(KitServiceImpl kitService, UserService userService, PackageEquipments packageEquipments) {
         this.kitService = kitService;
-        this.equipmentService = equipmentService;
+        this.userService = userService;
+        this.packageEquipments = packageEquipments;
     }
 
     @PostMapping("/equipments_guest/create/kit")
     public String addPackageEquipmentToKit(Principal principal, Model model) {
-        Kit kit = kitService.findByName(principal.getName());
-        model.addAttribute("kit", new KitRepr());
+        User user = userService.findByName(principal.getName());
+        KitRepr kit = new KitRepr(user, packageEquipments);
+        kitService.save(kit);
         return "redirect:/equipments_guest";
     }
 

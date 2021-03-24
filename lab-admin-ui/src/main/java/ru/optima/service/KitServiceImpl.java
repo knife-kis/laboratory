@@ -34,7 +34,7 @@ public class KitServiceImpl implements KitService {
         Kit kit = new Kit();
         kit.setId(kitRepr.getId());
         kit.setUser(kitRepr.getUser());
-//        kit.setEquipments(kitRepr.getEquipments());
+        kit.setEquipments(kitRepr.getEquipments());
         kitRepository.save(kit);
     }
 

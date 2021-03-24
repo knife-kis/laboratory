@@ -31,9 +31,9 @@ public class PackageEquipmentsController {
         return "package";
     }
 
-    @GetMapping("/bag/add/{id}")
-    public void addEquipmentToBagById(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response) throws IOException {
-        packageEquipments.add(equipmentService.findById(id).orElseThrow(NotFoundException::new));
-        response.sendRedirect(request.getHeader("referer"));
-    }
+//    @GetMapping("/bag/add/{id}")
+//    public void addEquipmentToBagById(@PathVariable Long id, HttpServletRequest request, HttpServletResponse response) throws IOException {
+//        packageEquipments.add(equipmentService.findById(id).orElseThrow(NotFoundException::new));
+//        response.sendRedirect(request.getHeader("referer"));
+//    }
 }

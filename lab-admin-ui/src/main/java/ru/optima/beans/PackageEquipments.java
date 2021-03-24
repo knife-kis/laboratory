@@ -14,7 +14,7 @@ import java.util.List;
 @Component
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class PackageEquipments {
-    private List<EquipmentRepr> equipments;
+    private List<Equipment> equipments;
 
     @PostConstruct
     public void init() {equipments = new ArrayList<>();}
@@ -23,8 +23,8 @@ public class PackageEquipments {
         equipments.clear();
     }
 
-    public void add(EquipmentRepr equipment){
-        for (EquipmentRepr e : equipments) {
+    public void add(Equipment equipment){
+        for (Equipment e : equipments) {
             if (e.getId().equals(equipment.getId())){
                 return;
             }
@@ -35,11 +35,11 @@ public class PackageEquipments {
     public PackageEquipments() {
     }
 
-    public List<EquipmentRepr> getEquipments() {
+    public List<Equipment> getEquipments() {
         return equipments;
     }
 
-    public void setEquipments(List<EquipmentRepr> equipments) {
+    public void setEquipments(List<Equipment> equipments) {
         this.equipments = equipments;
     }
 }
