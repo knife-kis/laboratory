@@ -11,4 +11,6 @@ public interface KitService {
     List<KitRepr> findAll();
 
     Kit findById(Long id);
+
+    Kit findByName(String name);
 }

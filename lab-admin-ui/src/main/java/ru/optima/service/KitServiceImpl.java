@@ -33,25 +33,25 @@ public class KitServiceImpl implements KitService {
     public void save(KitRepr kitRepr) {
         Kit kit = new Kit();
         kit.setId(kitRepr.getId());
-        kit.setEquipments(kitRepr.getEquipments());
-//        kit.setUser(kitRepr.getUser());
+        kit.setUser(kitRepr.getUser());
+//        kit.setEquipments(kitRepr.getEquipments());
         kitRepository.save(kit);
     }
 
-    public void addEquipment(Equipment equipment, Kit kit){
-        List<Equipment> equipments = kit.getEquipments();
-        for (Equipment e : equipments) {
-            if (e.getId().equals(equipment.getId())){
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!");
-                return;
-            }
-            System.out.println(equipments);
-            equipments.add(equipment);
-            kit.setEquipments(equipments);
-            System.out.println(kit.getId());
-            kitRepository.save(kit);
-        }
-    }
+//    public void addEquipment(Equipment equipment, Kit kit){
+//        List<Equipment> equipments = kit.getEquipments();
+//        for (Equipment e : equipments) {
+//            if (e.getId().equals(equipment.getId())){
+//                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!");
+//                return;
+//            }
+//            System.out.println(equipments);
+//            equipments.add(equipment);
+//            kit.setEquipments(equipments);
+//            System.out.println(kit.getId());
+//            kitRepository.save(kit);
+//        }
+//    }
 
     @Override
     public List<KitRepr> findAll() {
@@ -64,6 +64,10 @@ public class KitServiceImpl implements KitService {
     public Kit findById(Long id) {
         return kitRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException("Kit by id " + id + " was not found"));
+    }
+    @Override
+    public Kit findByName(String name) {
+        return kitRepository.findByName(name);
     }
 
     public void delete(Long id) {

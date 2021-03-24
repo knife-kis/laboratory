@@ -5,13 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import ru.optima.persist.model.equipments.Kit;
 import ru.optima.repr.KitRepr;
 import ru.optima.service.EquipmentServiceImpl;
 import ru.optima.service.KitServiceImpl;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import java.security.Principal;
 
 @Controller
 public class KitController {
@@ -26,9 +25,8 @@ public class KitController {
     }
 
     @PostMapping("/equipments_guest/create/kit")
-    public String addPackageEquipmentToKit(Model model) {
-        model.addAttribute("create", true);
-        model.addAttribute("activePage", "Users");
+    public String addPackageEquipmentToKit(Principal principal, Model model) {
+        Kit kit = kitService.findByName(principal.getName());
         model.addAttribute("kit", new KitRepr());
         return "redirect:/equipments_guest";
     }

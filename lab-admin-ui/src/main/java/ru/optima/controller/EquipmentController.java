@@ -10,6 +10,7 @@ import ru.optima.repr.KitRepr;
 import ru.optima.repr.EquipmentRepr;
 import ru.optima.service.EquipmentServiceImpl;
 import ru.optima.service.KitService;
+import ru.optima.service.KitServiceImpl;
 import ru.optima.service.UserServiceImpl;
 import ru.optima.warning.NotFoundException;
 
@@ -23,10 +24,10 @@ public class EquipmentController {
 
     private PackageEquipments packageEquipments;
     private EquipmentServiceImpl equipmentService;
-    private final KitService kitService;
+    private KitServiceImpl kitService;
 
     @Autowired
-    public EquipmentController(PackageEquipments packageEquipments, EquipmentServiceImpl equipmentService, KitService kitService) {
+    public EquipmentController(PackageEquipments packageEquipments, EquipmentServiceImpl equipmentService, KitServiceImpl kitService) {
         this.packageEquipments = packageEquipments;
         this.equipmentService = equipmentService;
         this.kitService = kitService;
