@@ -30,6 +30,9 @@ public class UserServiceImpl implements UserService {
 
     public void save(UserRepr userRepr) {
         User user = new User();
+        findByLastName(userRepr.getLastName()).ifPresent((u) -> {
+            throw new RuntimeException("User with lastname " + userRepr.getLastName() + " is already exist");
+        });
         user.setId(userRepr.getId());
         user.setPassword(passwordEncoder.encode(userRepr.getPassword()));
         user.setEmail(userRepr.getEmail());

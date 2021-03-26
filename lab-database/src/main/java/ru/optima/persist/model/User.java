@@ -46,7 +46,7 @@ public class User {
         this.id = id;
         this.password = password;
         this.email = email;
-        this.firstName = firstName;
+        this.firstName = firstName;  
         this.lastName = lastName;
         this.phone = phone;
         this.roles = roles;
