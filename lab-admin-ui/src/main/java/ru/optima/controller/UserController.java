@@ -70,7 +70,7 @@ public class UserController {
     }
 
     @PostMapping("/admin/user/edit")
-    public String adminUpdateUser(@Valid User user, Model model, BindingResult bindingResult) {
+    public String adminUpdateUser(@Valid User user, BindingResult bindingResult, Model model) {
         model.addAttribute("activePage", "Users");
 
         if (bindingResult.hasErrors()) {

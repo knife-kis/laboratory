@@ -19,16 +19,10 @@ import ru.optima.service.UserServiceImpl;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private UserServiceImpl userServiceImpl;
-    private UserDetailsService userDetailsService;
 
     @Autowired
     public void setUserService(UserServiceImpl userServiceImpl) {
         this.userServiceImpl = userServiceImpl;
-    }
-
-    @Autowired
-    public void setUserDetailsService(UserDetailsService userAuthService) {
-        this.userDetailsService = userAuthService;
     }
 
     @Override
@@ -61,7 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
         auth.setPasswordEncoder(passwordEncoder());
-        auth.setUserDetailsService(userDetailsService);
+        auth.setUserDetailsService(userServiceImpl);
         return auth;
     }
 }
