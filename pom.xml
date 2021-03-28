@@ -25,6 +25,7 @@
         <module>lab-database</module>
         <module>lab-admin-ui</module>
         <module>lab-ui</module>
+        <module>util</module>
     </modules>
 
 </project>

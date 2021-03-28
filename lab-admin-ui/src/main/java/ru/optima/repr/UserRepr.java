@@ -3,8 +3,11 @@ package ru.optima.repr;
 import ru.optima.persist.model.Work;
 import ru.optima.persist.model.Role;
 import ru.optima.persist.model.User;
+import ru.optima.utils.validation.FieldMatch;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -16,13 +19,18 @@ public class UserRepr {
     @NotEmpty
     private String password;
 
+    @Size(min = 3, message = "Имя слишком короткое")
     private String firstName;
 
     @NotEmpty
+    @Size(min = 3, message = "Фамилия слишком короткое")
     private String lastName;
 
+    @Size(min = 10, max = 12, message = "Неверный формат телефона")
     private String phone;
 
+    @Size(min = 5, message = "Email слишком короткий")
+    @Email
     private String email;
 
     private Collection<Role> roles;

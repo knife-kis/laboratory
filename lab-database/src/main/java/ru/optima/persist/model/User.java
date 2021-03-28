@@ -3,6 +3,7 @@ import ru.optima.persist.model.equipments.Equipment;
 import ru.optima.persist.model.equipments.Kit;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.List;
 

@@ -1,9 +1,12 @@
 package ru.optima.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import ru.optima.repr.UserRepr;
 import ru.optima.persist.model.User;
@@ -27,9 +30,10 @@ public class UserController {
         this.userServiceImpl = userServiceImpl;
     }
 
-    @GetMapping("/login")
-    public String loginPage() {
-        return "login";
+    @InitBinder
+    public void initBinder(WebDataBinder dataBinder) {
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+        dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
     }
 
     @GetMapping("/admin/users")
@@ -59,12 +63,20 @@ public class UserController {
     }
 
     @PostMapping("/admin/user/create")
-    public String adminCreateUser(@Valid UserRepr user, Model model, BindingResult bindingResult) {
+    public String adminCreateUser(@ModelAttribute("user") @Validated UserRepr user, BindingResult bindingResult, Model model) {
         model.addAttribute("activePage", "Users");
+        model.addAttribute("create", true);
+        model.addAttribute("roles", roleRepository.findAll());
 
         if (bindingResult.hasErrors()) {
             return "user_form";
         }
+//        User existing = userService.findByName(user.getLastName());
+//        if (existing != null){
+//            model.addAttribute("user", user);
+//            model.addAttribute("registrationError", "Такой пользователь уже существует");
+//            return "user_form";
+//        }
         userService.save(user);
         return "redirect:/admin/users";
     }
@@ -77,7 +89,7 @@ public class UserController {
             return "user_form";
         }
 
-        userServiceImpl.edit(user);
+        userService.edit(user);
         return "redirect:/admin/users";
     }
 

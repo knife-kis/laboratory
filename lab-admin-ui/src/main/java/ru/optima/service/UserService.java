@@ -5,6 +5,7 @@ import ru.optima.repr.UserRepr;
 import ru.optima.persist.model.User;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public interface UserService {
@@ -18,4 +19,6 @@ public interface UserService {
     void delete(Long id);
 
     User findByName(String name);
+
+    void edit(User user);
 }

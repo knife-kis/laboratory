@@ -78,6 +78,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return userRepository.findUserByLastName(lastName).map(UserRepr::new);
     }
 
+
     @Override
     public void delete(Long id) {
         userRepository.deleteById(id);
