@@ -90,6 +90,11 @@ public class UserServiceImpl implements UserService, UserDetailsService {
                 .orElseThrow(() -> new UserNotFoundException("User by name " + name + " was not found"));
     }
 
+    @Override
+    public Optional<User> findByOName(String name) {
+        return userRepository.findUserByLastName(name);
+    }
+
     public User updateUser(User user) {
         return userRepository.save(user);
     }

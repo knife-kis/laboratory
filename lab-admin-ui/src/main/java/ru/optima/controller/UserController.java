@@ -15,6 +15,7 @@ import ru.optima.service.UserService;
 import ru.optima.service.UserServiceImpl;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 public class UserController {
@@ -71,27 +72,34 @@ public class UserController {
         if (bindingResult.hasErrors()) {
             return "user_form";
         }
-//        User existing = userService.findByName(user.getLastName());
-//        if (existing != null){
-//            model.addAttribute("user", user);
-//            model.addAttribute("registrationError", "Такой пользователь уже существует");
-//            return "user_form";
-//        }
+        Optional<User> existing = userService.findByOName(user.getLastName());
+        if (existing.isPresent()){
+            model.addAttribute("user", user);
+            model.addAttribute("registrationError", "Пользователь с такой фамилией уже существует");
+            return "user_form";
+        }
         userService.save(user);
         return "redirect:/admin/users";
     }
 
-    @PostMapping("/admin/user/edit")
-    public String adminUpdateUser(@Valid User user, BindingResult bindingResult, Model model) {
-        model.addAttribute("activePage", "Users");
-
-        if (bindingResult.hasErrors()) {
-            return "user_form";
-        }
-
-        userService.edit(user);
-        return "redirect:/admin/users";
-    }
+//    @PostMapping("/admin/user/edit")
+//    public String adminUpdateUser(@ModelAttribute("user") @Validated User user, BindingResult bindingResult, Model model) {
+//        model.addAttribute("activePage", "Users");
+//        model.addAttribute("edit", true);
+//
+//        if (bindingResult.hasErrors()) {
+//            return "user_form";
+//        }
+//        Optional<User> existing = userService.findByOName(user.getLastName());
+//        if (existing.isPresent()){
+//            model.addAttribute("user", user);
+//            model.addAttribute("registrationError", "Пользователь с такой фамилией уже существует");
+//            return "user_form";
+//        }
+//
+//        userService.edit(user);
+//        return "redirect:/admin/users";
+//    }
 
     @DeleteMapping("/admin/user/{id}/delete")
     public String adminDeleteUser(Model model, @PathVariable("id") Long id) {

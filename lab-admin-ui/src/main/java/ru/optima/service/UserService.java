@@ -19,6 +19,7 @@ public interface UserService {
     void delete(Long id);
 
     User findByName(String name);
+    Optional<User> findByOName(String name);
 
     void edit(User user);
 }
