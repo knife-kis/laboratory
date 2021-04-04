@@ -33,6 +33,7 @@ public class KitController {
     public String addPackageEquipmentToKit(Principal principal) {
         User user = userService.findByName(principal.getName());
         KitRepr kitRepr = new KitRepr(user, packageEquipments);
+
         kitService.save(kitRepr);
         return "redirect:/equipments_guest";
     }

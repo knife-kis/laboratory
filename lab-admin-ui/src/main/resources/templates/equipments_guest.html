@@ -43,7 +43,7 @@
                     </tbody>
                 </table>
             </div>
-            <form class="form-group" th:object="${kit}" method="post" th:action="@{/equipments_guest/create/kit}">
+            <form class="form-group" method="post" th:action="@{/equipments_guest/create/kit}">
 
                 <div class="card-body">
                     <span th:unless="${@packageEquipments.equipments.size() > 0}">Ваша комплект не собран</span>

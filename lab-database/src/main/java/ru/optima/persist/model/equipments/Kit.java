@@ -21,7 +21,7 @@ public class Kit {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.MERGE)
     @JoinTable(name = "kits_equipments",
             joinColumns = @JoinColumn(name = "kit_id"),
             inverseJoinColumns = @JoinColumn(name = "equipments_id"))

@@ -13,17 +13,18 @@ public class KitRepr {
     private List<Equipment> equipments;
     private String name;
     private User user;
-    private int count = 1;
 
     public KitRepr() {
     }
 
     public KitRepr(User user, PackageEquipments pEquipments) {
         this.user = user;
-        this.name = "Комплет №:" + count++;
+        this.name = "Комплет №" + pEquipments.getCount();
         this.equipments = new ArrayList<>();
         this.equipments.addAll(pEquipments.getEquipments());
+        pEquipments.recolculateCount();
         pEquipments.clear();
+
     }
 
     public KitRepr(Kit kit) {

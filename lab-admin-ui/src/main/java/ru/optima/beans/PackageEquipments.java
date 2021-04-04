@@ -15,6 +15,7 @@ import java.util.List;
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class PackageEquipments {
     private List<Equipment> equipments;
+    private int count = 1;
 
     @PostConstruct
     public void init() {equipments = new ArrayList<>();}
@@ -35,11 +36,23 @@ public class PackageEquipments {
     public PackageEquipments() {
     }
 
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
     public List<Equipment> getEquipments() {
         return equipments;
     }
 
     public void setEquipments(List<Equipment> equipments) {
         this.equipments = equipments;
+    }
+
+    public void recolculateCount() {
+        count++;
     }
 }

@@ -1,12 +1,8 @@
 package ru.optima.persist.model.equipments;
 
-import ru.optima.persist.model.User;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.List;
-import java.util.Optional;
 
 @Entity
 @Table(name = "equipments")
